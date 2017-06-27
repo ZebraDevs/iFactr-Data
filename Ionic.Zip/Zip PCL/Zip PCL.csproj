@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E44CB979-B36C-48DF-8E38-DF7EF2242292}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ionic.Zip</RootNamespace>
+    <AssemblyName>Ionic.Zip</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PARTIAL_SIGN;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Zip\ComHelper.cs" />
+    <Compile Include="..\Zip\EncryptionAlgorithm.cs" />
+    <Compile Include="..\Zip\Events.cs" />
+    <Compile Include="..\Zip\Exceptions.cs" />
+    <Compile Include="..\Zip\ExtractExistingFileAction.cs" />
+    <Compile Include="..\Zip\OffsetStream.cs" />
+    <Compile Include="..\Zip\Shared.cs" />
+    <Compile Include="..\Zip\WinZipAes.cs" />
+    <Compile Include="..\Zip\ZipConstants.cs" />
+    <Compile Include="..\Zip\ZipCrypto.cs" />
+    <Compile Include="..\Zip\ZipDirEntry.cs" />
+    <Compile Include="..\Zip\ZipEntry.cs" />
+    <Compile Include="..\Zip\ZipEntry.Extract.cs" />
+    <Compile Include="..\Zip\ZipEntry.Read.cs" />
+    <Compile Include="..\Zip\ZipEntry.Write.cs" />
+    <Compile Include="..\Zip\ZipEntrySource.cs" />
+    <Compile Include="..\Zip\ZipErrorAction.cs" />
+    <Compile Include="..\Zip\ZipFile.AddUpdate.cs" />
+    <Compile Include="..\Zip\ZipFile.Check.cs" />
+    <Compile Include="..\Zip\ZipFile.cs" />
+    <Compile Include="..\Zip\ZipFile.Events.cs" />
+    <Compile Include="..\Zip\ZipFile.Extract.cs" />
+    <Compile Include="..\Zip\ZipFile.Read.cs" />
+    <Compile Include="..\Zip\ZipFile.Save.cs" />
+    <Compile Include="..\Zip\ZipFile.x-IEnumerable.cs" />
+    <Compile Include="..\Zip\ZipInputStream.cs" />
+    <Compile Include="..\Zip\ZipOutputStream.cs" />
+    <Compile Include="..\Zip\ZipSegmentedStream.cs" />
+    <Compile Include="..\BZip2\*.cs" Exclude="..\BZip2\ParallelBZip2OutputStream.cs">
+      <Link>BZip2\%(FileName)</Link>
+    </Compile>
+    <Compile Include="..\Zlib\*.cs">
+      <Link>Zlib\%(FileName)</Link>
+    </Compile>
+    <Compile Include="..\CommonSrc\CRC32.cs">
+      <Link>CRC32.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoCross">
+      <HintPath>..\..\MonoCross\Distribution\MonoCross.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29C4CA32-734E-4B88-BC47-2FCF4DA99803}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iFactr.Data</RootNamespace>
+    <AssemblyName>iFactr.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PCL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\iFactr.Data.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PCL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\iFactr.Data.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AzureMobileProvider.cs" />
+    <Compile Include="CachePeriod.cs" />
+    <Compile Include="DeltaCache.cs" />
+    <Compile Include="Network.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetworkResource\CacheStaleMethod.cs" />
+    <Compile Include="NetworkResource\Exceptions\NetworkResourceLibraryException.cs" />
+    <Compile Include="NetworkResource\NetworkResourceArguments.cs" />
+    <Compile Include="NetworkResource\NetworkResourceLibrary.cs" />
+    <Compile Include="NetworkResource\ResourceRequest.cs" />
+    <Compile Include="NetworkResource\ResourceResponse.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\BaseResourceStrategy.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheEncryption.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheFetcher.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndex.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexItem.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexMap.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexQueue.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheManifest.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CachePrefetcher.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheZip.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\ResourceResponseCache.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\DirectStream\ResourceResponseDirectStream.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Exceptions\ResourceStrategyException.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\IResourceStrategy.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\LocalFile\ResourceResponseLocalFile.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyCache.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyController.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyDirectStream.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyFactory.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyLocalFile.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyType.cs" />
+    <Compile Include="NetworkResource\StreamReaderExtensions.cs" />
+    <Compile Include="NetworkResource\XDocumentExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider.cs" />
+    <Compile Include="ProviderRegistry.cs" />
+    <Compile Include="ProviderResponse.cs" />
+    <Compile Include="ProviderSettings.cs" />
+    <Compile Include="QueueException.cs" />
+    <Compile Include="RestfulCache.cs" />
+    <Compile Include="RestfulObject.cs" />
+    <Compile Include="RestfulQueue.cs" />
+    <Compile Include="SyncQueue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Ionic.Zip\Zip PCL\Zip PCL.Debug.csproj">
+      <Project>{e44cb979-b36c-48df-8e38-df7ef2242292}</Project>
+      <Name>Zip PCL.Debug</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoCross\MonoCross.csproj">
+      <Project>{f8072058-8601-4141-8c7a-a8018a6bbafd}</Project>
+      <Name>MonoCross</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

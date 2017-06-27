@@ -1,0 +1,131 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF58CF3C-1F7E-4390-BB46-CD6792AB8F06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iFactr.Data</RootNamespace>
+    <AssemblyName>iFactr.Data.CF</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <PlatformID>4118C335-430C-497f-BE48-11C3316B135E</PlatformID>
+    <OSVersion>5.1</OSVersion>
+    <DeployDirSuffix>iFactr.Data.CF</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows Mobile 5.0 Pocket PC SDK</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;$(PlatformFamilyName);NETCF;</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Debug\iFactr.Data.CF.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName);NETCF;</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Release\iFactr.Data.CF.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ionic.Zip.CF">
+      <HintPath>..\Distribution\Ionic.Zip.CF.dll</HintPath>
+    </Reference>
+    <Reference Include="iFactr.Utilities.CF">
+      <HintPath>..\Distribution\iFactr.Utilities.CF.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoCross.Navigation.CF">
+      <HintPath>..\Distribution\MonoCross.Navigation.CF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CachePeriod.cs" />
+    <Compile Include="DeltaCache.cs" />
+    <Compile Include="Network.cs" />
+    <Compile Include="NetworkResource\CacheStaleMethod.cs" />
+    <Compile Include="NetworkResource\Exceptions\NetworkResourceLibraryException.cs" />
+    <Compile Include="NetworkResource\NetworkResourceArguments.cs" />
+    <Compile Include="NetworkResource\NetworkResourceLibrary.cs" />
+    <Compile Include="NetworkResource\ResourceRequest.cs" />
+    <Compile Include="NetworkResource\ResourceResponse.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\BaseResourceStrategy.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheEncryption.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheFetcher.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndex.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexItem.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexMap.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheIndexQueue.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheManifest.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CachePrefetcher.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\CacheZip.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Cache\ResourceResponseCache.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\DirectStream\ResourceResponseDirectStream.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\Exceptions\ResourceStrategyException.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\IResourceStrategy.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\LocalFile\ResourceResponseLocalFile.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyCache.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyController.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyDirectStream.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyFactory.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyLocalFile.cs" />
+    <Compile Include="NetworkResource\ResourceStrategy\ResourceStrategyType.cs" />
+    <Compile Include="NetworkResource\StreamReaderExtensions.cs" />
+    <Compile Include="NetworkResource\XDocumentExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider.cs" />
+    <Compile Include="ProviderRegistry.cs" />
+    <Compile Include="ProviderResponse.cs" />
+    <Compile Include="ProviderSettings.cs" />
+    <Compile Include="QueueException.cs" />
+    <Compile Include="RestfulCache.cs" />
+    <Compile Include="RestfulObject.cs" />
+    <Compile Include="RestfulQueue.cs" />
+    <Compile Include="SyncQueue.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

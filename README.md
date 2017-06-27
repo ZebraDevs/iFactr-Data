@@ -10,8 +10,7 @@ iFactr is a C#.NET-based, cross-platform mobile application development framewor
   - Merges the Cache/Queue when offline for seemless data interaction.
   
 
-
-iFactr is open source with a [public repository][iFactr] on GitHub.
+iFactr is open source with a [public repository][Zebra] on Zebra Technology's GitHub.
 
 ### Installation
 
@@ -45,7 +44,7 @@ iFactr-Data is distributed under MIT. The included Ionic Zip source code is dist
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 
-   [iFactr]: <https://github.com/zebra/iFactr>
+   [Zebra]: <https://github.com/zebra>
    [MSBuild]: <https://github.com/loresoft/msbuildtasks/releases>
    [Monocross]: <https://github.com/MonoCross/MonoCross>
    

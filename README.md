@@ -11,8 +11,6 @@ iFactr is a C#.NET-based, cross-platform mobile application development framewor
   
 
 
-iFactr is open source with a [public repository][iFactr] on GitHub.
-
 ### Installation
 
 Add References iFactr DLLs.

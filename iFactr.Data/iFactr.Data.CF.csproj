@@ -58,11 +58,8 @@
     <Reference Include="Ionic.Zip.CF">
       <HintPath>..\Distribution\Ionic.Zip.CF.dll</HintPath>
     </Reference>
-    <Reference Include="iFactr.Utilities.CF">
-      <HintPath>..\Distribution\iFactr.Utilities.CF.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoCross.Navigation.CF">
-      <HintPath>..\Distribution\MonoCross.Navigation.CF.dll</HintPath>
+    <Reference Include="MonoCross">
+      <HintPath>..\Distribution\MonoCross.CF.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

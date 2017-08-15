@@ -277,12 +277,19 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
         {
             DateTime dtMetric = DateTime.UtcNow;
 
-			// read temp file iFactr APIs because file saved to disk with encryption
+            // read temp file iFactr APIs because file saved to disk with encryption
             var zipBytes = new MemoryStream(Device.File.Read(zipFileName));
 
+#if NETCF
             using (var zip = Ionic.Zip.ZipFile.Read(zipBytes))
                 foreach (var entry in zip)
                     entry.Extract(cachePath, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently);
+#else
+            using (var zip = new System.IO.Compression.ZipArchive(zipBytes, System.IO.Compression.ZipArchiveMode.Read))
+                foreach (var entry in zip.Entries)
+                    using (var stream = entry.Open())
+                        Device.File.Save(cachePath.AppendPath(entry.FullName), stream);
+#endif
 
             Device.Log.Metric(string.Format("Extract zip file: file: {0} cache path: {1}  Time: {2:0} milliseconds", zipFileName, cachePath, DateTime.UtcNow.Subtract(dtMetric).TotalMilliseconds));
         }

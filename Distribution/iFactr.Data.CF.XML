@@ -1,0 +1,3840 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>iFactr.Data.CF</name>
+    </assembly>
+    <members>
+        <member name="T:iFactr.Data.CachePeriod">
+            <summary>
+            Contains DateTime values for the most frequently used cache expiration periods.
+            </summary>
+            <remarks>
+            The <c>CachePeriod </c>class is a utility class that calculates <c>DateTime </c>differentials based on the current UTC date/time.
+            </remarks>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Expired">
+            <summary>
+            Sets the cache period to expire immediately.
+            </summary>
+            <returns>The current UTC time to expire a cached item immediately.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.OneHour">
+            <summary>
+            Sets the cache period to expire in one hour.
+            </summary>
+            <returns>The current UTC time plus one hour.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Hours(System.Int32)">
+            <summary>
+            Sets the cache period to expire in the number of hours specified.
+            </summary>
+            <returns>The current UTC time plus the number of hours in the argument provided.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.OneDay">
+            <summary>
+            Sets the cache period to expire in one day.
+            </summary>
+            <returns>The current UTC time plus one day.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Days(System.Int32)">
+            <summary>
+            Sets the cache period to expire in the number of days specified.
+            </summary>
+            <returns>The current UTC time plus the number of days in the argument provided.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.OneWeek">
+            <summary>
+            Sets the cache period to expire in one week.
+            </summary>
+            <returns>The current UTC time plus one week.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Weeks(System.Int32)">
+            <summary>
+            Sets the cache period to expire in the number of weeks specified.
+            </summary>
+            <returns>The current UTC time plus the number of weeks in the argument provided.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.OneMonth">
+            <summary>
+            Sets the cache period to expire in one month.
+            </summary>
+            <returns>The current UTC time plus one month.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Months(System.Int32)">
+            <summary>
+            Sets the cache period to expire in the number of months specified.
+            </summary>
+            <returns>The current UTC time plus the number of months in the argument provided.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.OneYear">
+            <summary>
+            Sets the cache period to expire in one year.
+            </summary>
+            <returns>The current UTC time plus one year.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Years(System.Int32)">
+            <summary>
+            Sets the cache period to expire in the number of years specified.
+            </summary>
+            <returns>The current UTC time plus the number of years in the argument provided.</returns>
+        </member>
+        <member name="M:iFactr.Data.CachePeriod.Default">
+            <summary>
+            Sets the cache period to the default value.
+            </summary>
+            <returns>The current UTC time plus one month.</returns>
+        </member>
+        <member name="T:iFactr.Data.DeltaCache`1">
+            <summary>
+            Represents a list of cached objects that have been changed.
+            </summary>
+            <remarks>
+            the <c>DeltaCache&lt;T&gt;</c> class is used by the <c>Provider&lt;T&gt;</c> class to maintain a list of cached objects that have been changed via queued transaction processing. When an add, change, or delete transaction is successfully completed on a provider the the object, its transaction metadata is placed in the delta cache to assist in future caching operations involving that item. the delta cache is maintained automatically by the provider through normal usage.
+            </remarks>
+            <typeparam name="T">The generic object type of the collection</typeparam>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Add(iFactr.Data.DeltaCacheItem,System.Boolean)">
+            <summary>
+            Adds a unique DeltaCacheItem to the list.
+            </summary>
+            <param name="deltaCacheItem">The item to add.</param>
+            <param name="serialize">Indicates whether to serialize the delta cache after the change.</param>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Add(iFactr.Data.DeltaCacheItem)">
+            <summary>
+            Adds a unique DeltaCacheItem to the list.
+            </summary>
+            <param name="deltaCacheItem">The item to add.</param>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Update(iFactr.Data.DeltaCacheItem,System.Boolean)">
+            <summary>
+            Updates a unique DeltaCacheItem in the list.
+            </summary>
+            <param name="deltaCacheItem">The item to update.</param>
+            <param name="serialize">Indicates whether to serialize the delta cache after the change.</param>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Update(iFactr.Data.DeltaCacheItem)">
+            <summary>
+            Updates a unique DeltaCacheItem to the list.
+            </summary>
+            <param name="deltaCacheItem">The item to update.</param>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Remove(iFactr.Data.DeltaCacheItem,System.Boolean)">
+            <summary>
+            Removes a DeltaCacheItem from the list.
+            </summary>
+            <param name="deltaCacheItem">The item to remove.</param>
+            <param name="serialize">indicates whether to serialize the delta cache after the change.</param>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Remove(iFactr.Data.DeltaCacheItem)">
+            <summary>
+            Removes a DeltaCacheItem from the list.
+            </summary>
+            <param name="deltaCacheItem">The item to remove.</param>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Deserialize">
+            <summary>
+            Deserializes DeltaCache from file.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Serialize">
+            <summary>
+            Serializes DeltaCache to file.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Clear">
+            <summary>
+            Removes all delta cache items, and removes the serialized delta cache file from storage.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.DeltaCache`1.Clear(System.DateTime)">
+            <summary>
+            Removes delta cache contents posted on or before the date provided, and removes the serialized delta cache file from storage.
+            </summary>
+            <param name="clearDate">The post date on or before which the delta cache items are to be removed.</param>
+        </member>
+        <member name="T:iFactr.Data.DeltaCacheItem">
+            <summary>
+            Represents an individual delta cache item.
+            </summary>
+            <remarks>
+            The <c>DeltaCacheItem </c>class contains the metadata for a cached object that has been modified via queue processing.
+            </remarks>
+        </member>
+        <member name="P:iFactr.Data.DeltaCacheItem.Uri">
+            <summary>
+            Gets or sets the URI of the item.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.DeltaCacheItem.Verb">
+            <summary>
+            Gets or sets the HTTP Verb that describes the action taken on the item.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.DeltaCacheItem.PostDate">
+            <summary>
+            Gets or sets the transaction date of the item.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.Network">
+            <summary>
+            Represents the HTTP Network Utility.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.InitiatePrefetch(System.String)">
+            <summary>
+            method to initiate Prefetch processing based on provided manifest uri.
+            </summary>
+            <param name="manifestUri"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.InitiateCleanIndex">
+            <summary>
+            method to initiate Clean index processing
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The arguments for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The arguments for the request.</param>
+            <param name="type">The resource strategy type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The arguments for the request.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="type">The resource strategy type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="type">The resource strategy type.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The arguments for the request.</param>
+            <param name="type">The resource strategy type.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get``1(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType,MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Gets a resource using the specified URI.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The arguments for the request.</param>
+            <param name="type">The resource strategy type.</param>
+            <param name="format">The serialization format.</param>
+            <param name="customSerializerType">Type of the custom serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String)">
+            <summary>
+            Gets the resource.
+            </summary>
+            <param name="uri">The URI of the resource to get.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The network resource arguments for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The network resource arguments for the request.</param>
+            <param name="type">The strategy type for the resource.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The network resource arguments for the request.</param>
+            <param name="format">The serialization format for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="type">The strategy type for the resource.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="format">The serialization format for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="type">The strategy type for the resource.</param>
+            <param name="format">The serialization format for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Get(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Gets the specified resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="args">The network resource arguments for the request.</param>
+            <param name="type">The strategy type for the resource.</param>
+            <param name="format">The serialization format for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Patch``1(``0,System.String)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Patch``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Patch``1(``0,System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Patch``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Patch``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format.</param>
+            <param name="customSerializerType">Type of the custom serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Post``1(``0,System.String)">
+            <summary>
+            Posts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The object to post.</param>
+            <param name="uri">The resource URI.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Post``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Posts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The object to post.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Post``1(``0,System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Posts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The object to post.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Post``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Posts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The object to post.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Post``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Posts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The object to post.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format.</param>
+            <param name="customSerializerType">Type of the custom serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Put``1(``0,System.String)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Put``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Put``1(``0,System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Put``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Put``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Puts a resource to the URI specified.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The objet to put.</param>
+            <param name="uri">The resource URI.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format.</param>
+            <param name="customSerializerType">Type of the custom serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Delete``1(``0,System.String)">
+            <summary>
+            Deletes the specified resource.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The resource to delete in the request.</param>
+            <param name="uri">The URI of the resource.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Delete``1(``0,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Deletes the specified resource.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The resource to delete in the request.</param>
+            <param name="uri">The URI of the resource.</param>
+            <param name="headers">The headers for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Delete``1(``0,System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Deletes the specified resource.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The resource to be deleted on the request.</param>
+            <param name="uri">The URI of the resource.</param>
+            <param name="format">The serialization format for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Delete``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Deletes the specified resource.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The resource to be deleted on the request.</param>
+            <param name="uri">The URI of the resource.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.Network.Delete``1(``0,System.String,System.Collections.Generic.IDictionary{System.String,System.String},MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Deletes the specified resource.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj">The resource to be deleted on the request.</param>
+            <param name="uri">The URI of the resource.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="format">The serialization format for the request.</param>
+            <param name="customSerializerType">Type of the custom serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.CacheStaleMethod">
+            <summary>
+            Enum to specify how to handle attempts to refresh stale data.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.CacheStaleMethod.Deferred">
+            <summary>
+            Deferred: Attempt to refresh stale data by placing request upon idle thread queue
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.CacheStaleMethod.Immediate">
+            <summary>
+            Immediate: Attempt to refresh stale data immediately.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException">
+            <summary>
+            Represents a network resource library exception.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibraryException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner.</param>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments">
+            <summary>
+            Class containing arguments/parameters for NetworkResourceRequests.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments.Headers">
+            <summary>
+            Header values to inject into web request calls
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments.CacheStaleMethod">
+            <summary>
+            Method to attempt to refresh stale data (used in NRL Cache)
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments.TimeoutMilliseconds">
+            <summary>
+            Gets or sets the timeout milliseconds.
+            </summary>
+            <value>The timeout milliseconds; default is 60,000 milliseconds</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments.Expiration">
+            <summary>
+            Default Expiration of the resource being retreived
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary">
+            <summary>
+            Singleton
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.GetResourceRequest(System.String)">
+            <summary>
+            Gets the resource request.
+            </summary>
+            <param name="uri">The URI of the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.GetResourceRequest(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Returns Resource Request for specified cache with default resource strategy
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.GetResourceRequest(System.String,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType)">
+            <summary>
+            Gets the resource request.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="resourceStrategyType">Type of the resource strategy.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.GetResourceRequest(System.String,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Returns Resource Request for specified cache and resource strategy
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.Initialize">
+            <summary>
+            Initializes the Network Resource Library and the supporting objects
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.NetworkResourceLibrary.DefaultResourceStrategyType">
+            <summary>
+            The default ResourceStrategyType is currently the ResourceStrategyType.Cache
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceRequest">
+            <summary>
+            Internal constructor, create from NetworkResourceLibrary
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceRequest._uri">
+            <summary>
+            Full Uri used for obtaining request results.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceRequest.GetResponse(System.Int32)">
+            <summary>
+            Gets the response.
+            </summary>
+            <param name="timeoutMilliseconds">The timeout milliseconds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceRequest.GetResponse">
+            <summary>
+            Gets the response.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceRequest.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>The URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceRequest.NetworkResourceArguments">
+            <summary>
+            Gets or sets the network resource arguments.
+            </summary>
+            <value>The network resource arguments.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceRequest.ResourceStrategyType">
+            <summary>
+            Gets or sets the type of the resource strategy.
+            </summary>
+            <value>The type of the resource strategy.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceResponse">
+            <summary>
+            Abstract Network Resource Library Response class.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceResponse._uri">
+            <summary>
+            Full Uri used for obtaining request results.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceResponse._expiration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceResponse._attemptToRefresh">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceResponse.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceResponse"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceResponse.GetResponseFileName">
+            <summary>
+            Gets the name of the response file.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceResponse.GetResponseString">
+            <summary>
+            Gets the response string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceResponse.GetResponseBytes">
+            <summary>
+            Gets the response byte array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>The data.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.ResponseBytes">
+            <summary>
+            Gets or sets the response bytes.
+            </summary>
+            <value>The response bytes.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>The URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.Expiration">
+            <summary>
+            Gets or sets the expiration.
+            </summary>
+            <value>The expiration.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.AttemptToRefresh">
+            <summary>
+            Gets or sets the attempt to refresh.
+            </summary>
+            <value>The attempt to refresh.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.NetworkResourceArguments">
+            <summary>
+            Gets or sets the network resource arguments.
+            </summary>
+            <value>The network resource arguments.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceResponse.ReturnStatus">
+            <summary>
+            Gets or sets the return status.
+            </summary>
+            <value>The return status.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy">
+            <summary>
+            Represents a base resource strategy.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy.Initialize">
+            <summary>
+            Initializes this instance.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy.GetResponse(System.String)">
+            <summary>
+            Gets the resource response.
+            </summary>
+            <param name="uri">The URI of the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy.GetResponse(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Gets the resource response.
+            </summary>
+            <param name="uri">The URI of the request.</param>
+            <param name="args">The arguments to be used on the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy.GetBaseUri(System.String)">
+            <summary>
+            Gets the base URI.
+            </summary>
+            <param name="uriString">The URI string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy.GetRelativeUri(System.String)">
+            <summary>
+            Gets the relative URI.
+            </summary>
+            <param name="uriString">The URI string.</param>
+            <returns></returns>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.BaseResourceStrategy.Type">
+            <summary>
+            Gets the resource strategy type.
+            </summary>
+            <value>The resource strategy type.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheEncryption">
+            <summary>
+            Represents cache encryption information.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheEncryption.Encrypt(System.String)">
+            <summary>
+            Encrypts the specified data.
+            </summary>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheEncryption.Decrypt(System.String)">
+            <summary>
+            Decrypts the specified data.
+            </summary>
+            <param name="data">The data.</param>
+            <returns></returns>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheFetcher">
+            <summary>
+            Synchronous wrapper class around CacheFetcherAsynch
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheFetcher.Fetch(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Fetches the specified cache index item from the cache index.
+            </summary>
+            <param name="cacheIndex">Index of the cache.</param>
+            <param name="cacheIndexItem">The cache index item.</param>
+            <param name="args">NetworkResourceArguments for the request</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheFetcher.FetchAsynch(System.Object,System.Int32)">
+            <summary>
+            Performs an asynchronous fetch from the cache index.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <param name="timeoutMilliseconds">The timeout milliseconds.</param>
+        </member>
+        <member name="E:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheFetcher.OnDownloadComplete">
+            <summary>
+            Occurs when asynch download completes.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheFetcher.NetworkResourceLibraryEventHandler">
+            <summary>
+            Defines the delegate for factory events
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState">
+            <summary>
+            subclass to store information for Asynchronous file
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState"/> class.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.BufferSize">
+            <summary>
+            Gets or sets the size of the buffer.
+            </summary>
+            <value>The size of the buffer.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Request">
+            <summary>
+            Gets or sets the request.
+            </summary>
+            <value>The request.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Response">
+            <summary>
+            Gets or sets the response.
+            </summary>
+            <value>The response.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.ResponseString">
+            <summary>
+            Gets or sets the response string.
+            </summary>
+            <value>The response string.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.ResponseBytes">
+            <summary>
+            Gets or sets the response bytes.
+            </summary>
+            <value>The response bytes.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Expiration">
+            <summary>
+            Gets or sets the expiration date.
+            </summary>
+            <value>The expiration date.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Downloaded">
+            <summary>
+            Gets or sets the downloaded date.
+            </summary>
+            <value>The downloaded date.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.RelativeUri">
+            <summary>
+            Gets or sets the relative URI.
+            </summary>
+            <value>The relative URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.BaseUri">
+            <summary>
+            Gets or sets the base URI.
+            </summary>
+            <value>The base URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.AbsoluteUri">
+            <summary>
+            Gets the absolute URI.
+            </summary>
+            <value>The absolute URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Verb">
+            <summary>
+            Gets or sets the HTTP verb.
+            </summary>
+            <value>The HTTP verb.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.CacheFileName">
+            <summary>
+            Gets or sets the name of the cache file.
+            </summary>
+            <value>The name of the cache file.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.CacheIndex">
+            <summary>
+            Gets or sets the cache index.
+            </summary>
+            <value>The cache index.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.CacheIndexItem">
+            <summary>
+            Gets or sets the cache index item.
+            </summary>
+            <value>The cache index item.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.StatusCode">
+            <summary>
+            Gets or sets the HTTP status code.
+            </summary>
+            <value>The status HTTP code.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.WebExceptionStatusCode">
+            <summary>
+            Gets or sets the web exception status code.
+            </summary>
+            <value>The web exception status code.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Exception">
+            <summary>
+            Gets or sets the exception.
+            </summary>
+            <value>The exception.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>The error message.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+            <value>The data.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.RequestState.AttemptToRefresh">
+            <summary>
+            Gets or sets the attempt to refresh date.
+            </summary>
+            <value>The attempt to refresh date.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.PrefetchDelegate">
+            <summary>
+            Defines the delegate for prefetch events.
+            </summary>
+            <param name="indexUri">The URI of the CacheIndex on which the prefetch is called.</param>
+            <param name="items">The CacheIndexItems for the prefetch operation.</param>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex">
+            <summary>
+            Represents an index of cached resources.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.#ctor">
+            <summary>
+            For serialization on Touch only.  DO NOT USE. 
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Create(System.String)">
+            <summary>
+            Creates a new cache index using the specified base URI string.
+            </summary>
+            <param name="baseUriString">The base URI string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Create(System.String,System.String)">
+            <summary>
+            Creates a new cache index using the specified base URI string and cache path.
+            </summary>
+            <param name="baseUriString">The base URI string.</param>
+            <param name="cachePath">The cache path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Create(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest)">
+            <summary>
+            Creates a new cache index using the specified cache manifest.
+            </summary>
+            <param name="cacheManifest">The cache manifest.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Create(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest,System.String)">
+            <summary>
+            Creates a new cache index using the specified cache manifest and cache path.
+            </summary>
+            <param name="cacheManifest">The cache manifest.</param>
+            <param name="cachePath">The cache path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.DeserializeCacheIndex(System.String)">
+            <summary>
+            Deserializes the cache index.
+            </summary>
+            <param name="serializeFileName">Name of the serialize file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.SerializeCacheIndex(System.Object)">
+            <summary>
+            Serializes the cache index.
+            </summary>
+            <param name="obj">The cache index to serialize.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.SerializeCacheIndex(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex)">
+            <summary>
+            Serializes the cache index.
+            </summary>
+            <param name="cacheIndex">The cache index to serialize.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.SerializeCacheIndexImmediate(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex)">
+            <summary>
+            Serializes the cache index immediately.
+            </summary>
+            <param name="cacheIndex">The cache index to serialize.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Add(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem)">
+            <summary>
+            Adds the specified cache index item.
+            </summary>
+            <param name="cacheIndexItem">The cache index item.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Add(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem,System.Boolean)">
+            <summary>
+            Adds the specified cache index item.
+            </summary>
+            <param name="cacheIndexItem">The cache index item.</param>
+            <param name="saveIndex">if set to <c>true</c> save the index to persietent storage.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.UpdateIndex(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest)">
+            <summary>
+            Updates the index using the specified cache manifest.
+            </summary>
+            <param name="manifest">The cache manifest.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.CleanIndex(System.Object)">
+            <summary>
+            Cleans the index.
+            </summary>
+            <param name="obj">The obj.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.CleanIndex">
+            <summary>
+            Cleans the cache index.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.PreFetchItems(System.Object)">
+            <summary>
+            overload to match ParameterizedThreadStart delegate
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.PreFetchItems">
+            <summary>
+            Prefetches items in CacheIndex list
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.WeedIndex">
+            <summary>
+            Weeds Index: Remove all files in cache folder and subfolders that do not
+            have corresponding <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem"/> entries in this cache index.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.KillIndex">
+            <summary>
+            Kills Index: Removes all files in cache folder and all entries in this cache index.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Get(System.String)">
+            <summary>
+            Gets a CacheIndexItem from the CacheIndex for requested uri
+            </summary>
+            <param name="uri">Absolute Uri associated with requested CacheIndexItem</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.Get(System.String,System.Boolean)">
+            <summary>
+            Gets a CacheIndexItem from the CacheIndex for requested uri
+            </summary>
+            <param name="uri">Absolute Uri associated with requested CacheIndexItem</param>
+            <param name="addIfNew">if set to <c>true</c> adds the index item if it is not present.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.GetRelativeUri(System.String)">
+            <summary>
+            Gets the relative URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.EnsureCurrentCache(System.Object)">
+            <summary>
+            Overload to match ParameterizedThreadStart delegate.
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.EnsureCurrentCache(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem)">
+            <summary>
+            Ensures that the CacheIndexItem has a current resource in cache.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.EnsureCurrentCache(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Ensures that the CacheIndexItem has a current resource in cache.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.RemoveCurrentCache(System.Object)">
+            <summary>
+            overload to match ParameterizedThreadStart delegate
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.RemoveCurrentCache(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem)">
+            <summary>
+            Removes cached file from file system and expires metadata. 
+            </summary>
+            <param name="cacheIndexItem"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.GetFileName(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem,MonoCross.NetworkResponse@)">
+            <summary>
+            Gets the name of the file.
+            </summary>
+            <param name="cacheIndexItem">The cache index item.</param>
+            <param name="networkResponse">The network response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.GetFileName(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments,MonoCross.NetworkResponse@)">
+            <summary>
+            Confirms the requested item is in cache and current, then returns full name to cached file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.GetCachePath(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem)">
+            <summary>
+            Gets the cache path.
+            </summary>
+            <param name="cacheIndexItem">The cache index item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.GetAbsouteUri(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem)">
+            <summary>
+            Gets the absolute URI.
+            </summary>
+            <param name="cacheIndexItem">The cache index item.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="E:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.OnPrefetchComplete">
+            <summary>
+            Occurs when a cache prefetch operation is complete.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.CachePath">
+            <summary>
+            Gets or sets the cache path.
+            </summary>
+            <value>The cache path.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.BaseUri">
+            <summary>
+            Gets or sets the base URI.
+            </summary>
+            <value>The base URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.BaseUriPath">
+            <summary>
+            Gets the base URI path.
+            </summary>
+            <value>The base URI path.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.SerializeFile">
+            <summary>
+            Gets or sets the serialize file.
+            </summary>
+            <value>The serialize file.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.SerializeFileName">
+            <summary>
+            Gets or sets the name of the serialize file name.
+            </summary>
+            <value>The name of the serialize file.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.SerializationInterval">
+            <summary>
+            Gets or sets the serialization interval.
+            </summary>
+            <value>The serialization interval.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.PreFetchIndexEnabled">
+            <summary>
+            Prefetch property to control the prefetch process for this instance of CacheIndex.
+            </summary>
+            <value>
+            	<c>true</c> if prefecth is enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex.CleanIndexEnabled">
+            <summary>
+            Clean index property to control the clean index process for this instance of CacheIndex.
+            </summary>
+            <value><c>true</c> if clean index is enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem">
+            <summary>
+            Represents a cache index item.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.Expire">
+            <summary>
+            Expires the metadata for the given item but doesn't remove cached file.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.Stale">
+            <summary>
+            Marks the metadata as Stale for the given item but doesn't remove cached file.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.ID">
+            <summary>
+            A unique <see cref="T:System.String"/> identifier that determines the path for this instance's location on disk.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.Downloaded">
+            <summary>
+            Downloaded date in universal time
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.AttemptToRefresh">
+            <summary>
+            Gets or sets the attempt to refresh date.
+            </summary>
+            <value>The attempt to refresh date.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.Expiration">
+            <summary>
+            cache expiration date in universal time
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.PreFetch">
+            <summary>
+            Gets or sets a value indicating whether the item is prefectched.
+            </summary>
+            <value><c>true</c> if the item is prefectched; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.ETag">
+            <summary>
+            Gets or sets the E tag.
+            </summary>
+            <value>The E tag.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.UsageCount">
+            <summary>
+            Gets or sets the usage count.
+            </summary>
+            <value>The usage count.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.ContentType">
+            <summary>
+            Gets or sets the type of the content.
+            </summary>
+            <value>The type of the content.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.RelativeUri">
+            <summary>
+            Gets or sets the relative URI.
+            </summary>
+            <value>The relative URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.IsExpired">
+            <summary>
+            Gets a value indicating whether this instance is expired.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is expired; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.IsStale">
+            <summary>
+            Gets a value indicating whether this instance is stale.
+            </summary>
+            <value><c>true</c> if this instance is stale; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem.IsDownloaded">
+            <summary>
+            Gets a value indicating whether this instance is downloaded.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is downloaded; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap">
+            <summary>
+            Represents the cache index map.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Add(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex)">
+            <summary>
+            Adds the specified cache index.
+            </summary>
+            <param name="cacheIndex">The cache index to add to the map.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Add(System.String)">
+            <summary>
+            Adds the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Add(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest)">
+            <summary>
+            Adds the specified cache manifest.
+            </summary>
+            <param name="cacheManifest">The cache manifest.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Get(System.String)">
+            <summary>
+            Gets the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.GetFromUri(System.String)">
+            <summary>
+            Returns cache index that matches Uri
+            </summary>
+            <param name="uriString">Absolute Uri for resource represented by Uri</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Update(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex)">
+            <summary>
+            Updates the specified cache index.
+            </summary>
+            <param name="cacheIndex">Index of the cache.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.GetKey(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex)">
+            <summary>
+            Derives a unique key for a cache index, i.e. cacheIndex.BaseUri
+            </summary>
+            <param name="cacheIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.GetKeyFromUri(System.String)">
+            <summary>
+            Gets the key from URI specified.
+            </summary>
+            <param name="uriString">The URI string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Remove(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndex)">
+            <summary>
+            Removes the specified cache index.
+            </summary>
+            <param name="cacheIndex">Index of the cache.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Remove(System.String)">
+            <summary>
+            Removes the specified key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.PreFetchIndexes(System.Object)">
+            <summary>
+            Overload to match ParameterizedThreadStart delegate
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.PreFetchIndexes">
+            <summary>
+            Calls Prefetch items for each CacheIndex.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.CleanIndexes(System.Object)">
+            <summary>
+            Overload to match ParameterizedThreadStart delegate
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.CleanIndexes">
+            <summary>
+            Calls CleanIndex for each CacheIndex.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.IgnoreCase">
+            <summary>
+            Gets or sets a value indicating whether the cache index map is case insensitive.
+            </summary>
+            <value><c>true</c> if case is ignored; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.PrefetchProcessEnabled">
+            <summary>
+            Prefetch property to control the prefetch process overall.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexMap.Map">
+            <summary>
+            Gets the cache index map.
+            </summary>
+            <value>The cache index map as a dictionary keyed by base URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexDelegateCall.Delegate">
+            <summary>
+            Gets or sets the delegate.
+            </summary>
+            <value>The delegate.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexDelegateCall.Item">
+            <summary>
+            Gets or sets the item.
+            </summary>
+            <value>The item.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue">
+            <summary>
+            Represents a cache index queue.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.SyncQueue`1">
+            <summary>
+            Represents a synchronization queue
+            </summary>
+            <typeparam name="T">The generic type of the queue.</typeparam>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.SyncQueue`1"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.Peek">
+            <summary>
+            Peeks this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.Enqueue(`0)">
+            <summary>
+            Enqueues the specified element.
+            </summary>
+            <param name="element">The element.</param>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.Dequeue(System.Int32)">
+            <summary>
+            Dequeues the first queue element.
+            </summary>
+            <param name="timeout_milliseconds">The timeout value in milliseconds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.Dequeue">
+            <summary>
+            Dequeues this first element in the instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.Interrupt">
+            <summary>
+            Interrupts queue processing on this instance.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.Uninterrupt">
+            <summary>
+            Uninterrupts queue processing on this instance.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.ICollection"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param>
+            <param name="index">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+            <exception cref="T:System.ArgumentNullException">
+            	<paramref name="array"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<paramref name="index"/> is less than zero.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            	<paramref name="array"/> is multidimensional.
+            -or-
+            <paramref name="index"/> is equal to or greater than the length of <paramref name="array"/>.
+            -or-
+            The number of elements in the source <see cref="T:System.Collections.ICollection"/> is greater than the available space from <paramref name="index"/> to the end of the destination <paramref name="array"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The type of the source <see cref="T:System.Collections.ICollection"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
+            </exception>
+        </member>
+        <member name="M:iFactr.Data.SyncQueue`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:iFactr.Data.SyncQueue`1.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.ICollection"/>.
+            </summary>
+            <value></value>
+            <returns>
+            The number of elements contained in the <see cref="T:System.Collections.ICollection"/>.
+            </returns>
+        </member>
+        <member name="P:iFactr.Data.SyncQueue`1.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
+            </summary>
+            <value></value>
+            <returns>true if access to the <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe); otherwise, false.
+            </returns>
+        </member>
+        <member name="P:iFactr.Data.SyncQueue`1.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
+            </summary>
+            <value></value>
+            <returns>
+            An object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue.Enqueue(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexDelegateCall)">
+            <summary>
+            Enqueues the specified cache index delegate call.
+            </summary>
+            <param name="cacheIndexDelegateCall">The cache index delegate call.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue.Enqueue(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexDelegate,iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexItem)">
+            <summary>
+            Enqueues the specified cache index delegate.
+            </summary>
+            <param name="cacheIndexDelegate">The cache index delegate.</param>
+            <param name="cacheIndexItem">The cache index item.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue.AttemptNextCall">
+            <summary>
+            Attempts the next call.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue.Instance">
+            <summary>
+            Gets the instance of the cache index queue singleton.
+            </summary>
+            <value>The CacheIndexQueue instance.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheIndexQueue"/> is enabled.
+            </summary>
+            <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest">
+            <summary>
+            Represents a cache manifest for the prefetcher.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.#ctor">
+            <summary>
+            CacheManifest Private Constructor
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.CreateFromUri(System.String)">
+            <summary>
+            Factory method to create CacheManifest based on URI string
+            </summary>
+            <param name="manifestUri">string</param>
+            <returns>CacheManifest</returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.CreateFromUri(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Factory method to create CacheManifest based on URI string
+            </summary>
+            <param name="manifestUri">the manifest URI string.</param>
+            <param name="headers">The headers for the request.</param>
+            <returns>CacheManifest</returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.CreateFromString(System.String)">
+            <summary>
+            Factory Method to create CacheManifest from a properly formatted String.
+            </summary>
+            <param name="manifestString">Manifest Response string (i.e. cache manifest file as a string)</param>
+            <returns>CacheManifest</returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.PopulateCacheManifest(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest,System.String)">
+            <summary>
+            populates a CacheManifest object from a string of cache manifest data.
+            </summary>
+            <param name="cacheManifest"></param>
+            <param name="manifest"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.AddCacheManifestNetworkItem(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest,System.String)">
+            <summary>
+            Delegate to parse and add entry to Network list.
+            </summary>
+            <param name="cacheManifest"></param>
+            <param name="value"></param>e-manifest are never cached.
+            <remarks>Network list items in cache</remarks>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.AddCacheManifestCacheItem(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest,System.String)">
+            <summary>
+            Delegate to parse and add entry to Cache list
+            </summary>
+            <param name="cacheManifest"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.AddCacheManifestFallbackItem(iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest,System.String)">
+            <summary>
+            Delegate to parse and add entry to fallback list
+            </summary>
+            <param name="cacheManifest"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.Cache">
+            <summary>
+            Gets or sets the cache.
+            </summary>
+            <value>The Collection of resources to be pre-fetched.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.Network">
+            <summary>
+            Gets or sets the network.
+            </summary>
+            <value>The Collection of resources and/or patterns to be white-listed for never caching.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.Fallback">
+            <summary>
+            Gets or sets the fallback.
+            </summary>
+            <value>The Collection of resources and/or patterns with fallback mappings if connection and cache in unavailable.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.ManifestUri">
+            <summary>
+            Gets or sets the manifest URI.
+            </summary>
+            <value>The manifest URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.ManifestFileName">
+            <summary>
+            Gets the name of the manifest file.
+            </summary>
+            <value>The name of the manifest file.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.ManifestBaseUri">
+            <summary>
+            Gets the manifest base URI.
+            </summary>
+            <value>The manifest base URI.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheManifest.CacheManifestMode">
+            <summary>
+            Enum used to parse cache manifest file.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CachePrefetcher">
+            <summary>
+            Represents the cache prefetcher.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CachePrefetcher.InitiatePrefetch">
+            <summary>
+            Initiates the prefetch.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CachePrefetcher.Instance">
+            <summary>
+            Gets the instance of the prefetcher.
+            </summary>
+            <value>The prefetcher singleton instance.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CachePrefetcher.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CachePrefetcher"/> is enabled.
+            </summary>
+            <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.Extract(System.String,System.String)">
+            <summary>
+            Extracts a resoure into the NRL cache files and applies metadata.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="metadataFileName">Name of the metadata file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.Extract(System.String,System.String,System.Int32)">
+            <summary>
+            Extracts a resoure into the NRL cache files and applies metadata.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="metadataFileName">Name of the metadata file.</param>
+            <param name="timeout">The timeout for the requst in milliseconds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.Extract(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Extracts a resoure into the NRL cache files and applies metadata.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="metadataFileName">Name of the metadata file.</param>
+            <param name="headers">The headers for the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.Extract(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Int32)">
+            <summary>
+            Extracts a resoure into the NRL cache files and applies metadata.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="metadataFileName">Name of the metadata file.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="timeout">The timeout for the requst in milliseconds.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.Extract(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Int32,System.Object,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Extracts a resoure into the NRL cache files and applies metadata.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="metadataFileName">Name of the metadata file.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="timeout">The timeout for the requst in milliseconds.</param>
+            <param name="postObject">The object to post.</param>
+            <param name="serializationFormat">The serialization format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.DownloadZipFile(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Int32,System.Object)">
+            <summary>
+            Downloads a zip file resource.
+            </summary>
+            <param name="uri">The URI of the resource.</param>
+            <param name="filename">The filename for the resource.</param>
+            <param name="headers">The headers for the request.</param>
+            <param name="timeout">The request timeout in milliseconds.</param>
+            <param name="postObject">The object to post.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.CacheZip.ExtractZipFile(System.String,System.String)">
+            <summary>
+            Extracts the zip file.
+            </summary>
+            <param name="zipFileName">Name of the zip file.</param>
+            <param name="cachePath">The cache path.</param>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache">
+            <summary>
+            Represents the resource response cache.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.#ctor(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache"/> class.
+            </summary>
+            <param name="uri">The URI of the request.</param>
+            <param name="args">The arguments used on the request.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.GetResponseFileName">
+            <summary>
+            returns the full path name of the cached file for CacheIndexItem
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.GetResponseString">
+            <summary>
+            Gets the response string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.GetResponseBytes">
+            <summary>
+            Gets the response byte array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.CacheIndex">
+            <summary>
+            Gets or sets the index of the cache.
+            </summary>
+            <value>The index of the cache.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.CacheIndexItem">
+            <summary>
+            Gets or sets the cache index item.
+            </summary>
+            <value>The cache index item.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.Expiration">
+            <summary>
+            Gets or sets the expiration.
+            </summary>
+            <value>The expiration.</value>
+        </member>
+        <member name="P:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache.ResourceResponseCache.AttemptToRefresh">
+            <summary>
+            Gets or sets the attempt to refresh date.
+            </summary>
+            <value>The attempt to refresh date.</value>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.DirectStream.ResourceResponseDirectStream">
+            <summary>
+            Represents a direct stream resource response.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.DirectStream.ResourceResponseDirectStream.#ctor(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.DirectStream.ResourceResponseDirectStream"/> class.
+            </summary>
+            <param name="uri">The URI of the request.</param>
+            <param name="args">The arguments used on the request.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.DirectStream.ResourceResponseDirectStream.GetResponseFileName">
+            <summary>
+            returns Uri for response object. Direct stream doesn't have a natural file name.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.DirectStream.ResourceResponseDirectStream.GetResponseString">
+            <summary>
+            Gets the response string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.DirectStream.ResourceResponseDirectStream.GetResponseBytes">
+            <summary>
+            Gets the response byte array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException">
+            <summary>
+            Represents a resource strategy exception.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions.ResourceStrategyException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.LocalFile.ResourceResponseLocalFile">
+            <summary>
+            Represents a local resoures response file.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.LocalFile.ResourceResponseLocalFile.#ctor(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            ctor for File resource response class
+            </summary>
+            <param name="uri">Full Uri of resource request</param>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.LocalFile.ResourceResponseLocalFile.GetResponseFileName">
+            <summary>
+            returns Uri for response object. Direct stream doesn't have a natural file name.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.LocalFile.ResourceResponseLocalFile.GetResponseString">
+            <summary>
+            Gets the response string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.LocalFile.ResourceResponseLocalFile.GetResponseBytes">
+            <summary>
+            Gets the response byte array.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyCache.GetResponse(System.String,iFactr.Data.Utilities.NetworkResource.NetworkResourceArguments)">
+            <summary>
+            Gets the resource response.
+            </summary>
+            <param name="uri">The URI of the request.</param>
+            <param name="args">The arguments to be used on the request.</param>
+            <returns></returns>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType">
+            <summary>
+            Specifies the valid resource strategy types.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType.Cache">
+            <summary>
+            Places a copy of the resource in both the in-memory and persistent cache.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType.DirectStream">
+            <summary>
+            Returns the resource directly with no caching.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.Utilities.NetworkResource.ResourceStrategy.ResourceStrategyType.LocalFile">
+            <summary>
+            Places a copy of the resource in the persistent cache, but not in-memory.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.Utilities.NetworkResource.XDocumentExtensions">
+            <summary>
+            Contains Utility XDocument extension methods.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.XDocumentExtensions.Load(System.Xml.Linq.XDocument,System.String,System.TimeSpan)">
+            <summary>
+            extension method to load url into Xdocument from Network Resource Library cache (refreshing if needed)
+            </summary>
+            <param name="doc">Xdocument</param>
+            <param name="url">URL for resource being requested</param>
+            <param name="cachePeriod">TimeSpan to retain cached resource, if not specified on server</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.XDocumentExtensions.Load(System.Xml.Linq.XDocument,System.String,System.TimeSpan,System.Boolean)">
+            <summary>
+            extension method to load url into Xdocument from Network Resource Library cache (refreshing if needed)
+            </summary>
+            <param name="doc">Xdocument</param>
+            <param name="url">URL for resource being requested</param>
+            <param name="cachePeriod">TimeSpan to retain cached resource, if not specified on server</param>
+            <param name="prefetch">Indicates whether resource should be maintained by prefetcher</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.XDocumentExtensions.Load(System.Xml.Linq.XElement,System.String,System.TimeSpan)">
+            <summary>
+            extension method to load url into Xdocument from Network Resource Library cache (refreshing if needed)
+            </summary>
+            <param name="element">XElement</param>
+            <param name="url">URL for resource being requested</param>
+            <param name="cachePeriod">TimeSpan to retain cached resource, if not specified on server</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Utilities.NetworkResource.XDocumentExtensions.Load(System.Xml.Linq.XElement,System.String,System.TimeSpan,System.Boolean)">
+            <summary>
+            extension method to load url into Xdocument from Network Resource Library cache (refreshing if needed)
+            </summary>
+            <param name="element">XElement</param>
+            <param name="url">URL for resource being requested</param>
+            <param name="cachePeriod">TimeSpan to retain cached resource, if not specified on server</param>
+            <param name="prefetch">Indicates whether resource should be maintained by prefetcher</param>
+            <returns></returns>
+        </member>
+        <member name="T:iFactr.Data.ProviderMethod">
+            <summary>
+            Specifies the supported operations on a data provider.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ProviderMethod.GET">
+            <summary>
+            Enables list and item retrieval; GET is always supported on data providers.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ProviderMethod.POST">
+            <summary>
+            Enables item creation on a data provider via the Add method.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ProviderMethod.PUT">
+            <summary>
+            Enables item modification on a data provider via the Update method.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ProviderMethod.DELETE">
+            <summary>
+            Enables item removal on a data provider via the Delete method.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.IDataProvider">
+            <summary>
+            Defines the implementation contract for a data provider.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.IDataProvider.ProviderType">
+            <summary>
+            Gets the type of the provider.
+            </summary>
+            <value>The type of the provider.</value>
+        </member>
+        <member name="T:iFactr.Data.ICompositeDataProvider">
+            <summary>
+            Defines the implementation contract for a composite data provider.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.ICompositeDataProvider.Providers">
+            <summary>
+            Gets a collection of associated data providers.
+            </summary>
+            <value>The providers.</value>
+        </member>
+        <member name="T:iFactr.Data.IDataProvider`1">
+            <summary>
+            Defines the implementation contract for a generic data provider.
+            </summary>
+            <typeparam name="T">The generic object type for the provider.</typeparam>
+        </member>
+        <member name="M:iFactr.Data.IDataProvider`1.Get(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets a provider managed object.
+            </summary>
+            <param name="parameters">The parameters to be used in the request.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.IDataProvider`1.Add(`0)">
+            <summary>
+            Adds the specified object using the provider.
+            </summary>
+            <param name="obj">The object to add.</param>
+        </member>
+        <member name="M:iFactr.Data.IDataProvider`1.Change(`0)">
+            <summary>
+            Changes the specified object using the provider.
+            </summary>
+            <param name="obj">The object to change.</param>
+        </member>
+        <member name="M:iFactr.Data.IDataProvider`1.Delete(`0)">
+            <summary>
+            Deletes the specified object using the provider.
+            </summary>
+            <param name="obj">The object to delete.</param>
+        </member>
+        <member name="T:iFactr.Data.Provider`1">
+            <summary>
+            This class represents an iFactr data provider.
+            </summary>
+            <typeparam name="T">The generic object type for the provider.</typeparam>
+            <remarks>
+            The Provider&lt;T&gt; class provides the base implementation for all data
+            providers, and implements the base list plus transaction methods, (CRUD).
+            </remarks>
+        </member>
+        <member name="F:iFactr.Data.Provider`1.queue">
+            <summary>The RestfulQueue supporting this Provider</summary>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="keyParameters">The key parameters.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,System.Int32,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+            <param name="keyParameters">The key parameters.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="format">The format.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="format">The format.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="queueFormat">The queue format.</param>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="queueFormat">The queue format.</param>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="queueFormat">The queue format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="businessObjectFormat">The business object format.</param>
+            <param name="customSerializationType">Type of the custom serialization.</param>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="queueFormat">The queue format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="businessObjectFormat">The business object format.</param>
+            <param name="customSerializationType">Type of the custom serialization.</param>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="format">The format.</param>
+            <param name="keyParameters">The key parameters.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Int32,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="format">The format.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+            <param name="keyParameters">The key parameters.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="queueFormat">The queue format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="businessObjectFormat">The business object format.</param>
+            <param name="customSerializationType">Type of the custom serialization.</param>
+            <param name="keyParameters">The key parameters.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.#ctor(System.String,System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,System.Int32,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.Provider`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="objectUri">The object URI.</param>
+            <param name="listUri">The list URI.</param>
+            <param name="queueFormat">The queue format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="businessObjectFormat">The business object format.</param>
+            <param name="customSerializationType">Type of the custom serialization.</param>
+            <param name="responseTimeout">The response timeout (in milliseconds).</param>
+            <param name="keyParameters">The key parameters.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.PopulateKeys(System.String,System.String,System.String)">
+            <summary>
+            Populates the keys.
+            </summary>
+            <param name="keyParameter0">The key parameter0.</param>
+            <param name="keyParameter1">The key parameter1.</param>
+            <param name="keyParameter2">The key parameter2.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.OnTransactionComplete(iFactr.Data.RestfulObject{`0},System.String)">
+            <summary>
+            Called when a RESTful transaction is successfully completed.
+            </summary>
+            <param name="item">The transaction item.</param>
+            <param name="verb">The HTTP verb of the transaction.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.OnTransactionFailed(iFactr.Data.RestfulObject{`0},System.String,System.Exception)">
+            <summary>
+            Called when a RESTful transaction fails due to an unhandled exception.
+            </summary>
+            <param name="item">The transacion item.</param>
+            <param name="verb">The HTTP verb of the transaction.</param>
+            <param name="ex">The the unhandled exception causing the failure.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.OnTransactionError(iFactr.Data.RestfulObject{`0},System.String,System.Net.HttpStatusCode)">
+            <summary>
+            Called when a RESTful transaction fails due to an HTTP error status code.
+            </summary>
+            <param name="item">The transaction item.</param>
+            <param name="verb">The HTTP verb of the transaction.</param>
+            <param name="error">The HTTP error returned by the server.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.DiscardQueue">
+            <summary>
+            Discards the queue and clears out all items
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets a list of objects using the default cache method, and the parameters provided.
+            </summary>
+            <param name="parameters">parameter collection needed to populate object uri</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(iFactr.Data.CacheMethodType,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets list of objects using the cache method specified, and the parameters provided.
+            </summary>
+            <param name="cacheMethod">Cache method to use for request</param>
+            <param name="parameters">parameter collection needed to populate object uri</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList">
+            <summary>
+            Gets a list of objects using the default cache method.
+            </summary>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(iFactr.Data.CacheMethodType)">
+            <summary>
+            Gets a list of objects using the cache method provided.
+            </summary>
+            <param name="cacheMethod">Cache method to use for request.</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(System.String)">
+            <summary>
+            Gets a list of objects using the default cache method, and the parameter provided.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(iFactr.Data.CacheMethodType,System.String)">
+            <summary>
+            Gets an instance of the list from the List Uri.
+            </summary>
+            <param name="cacheMethod">Cache method to use for request</param>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(System.String,System.String)">
+            <summary>
+            Gets an instance of the list from the List Uri; using provider default cache method
+            </summary>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <param name="parm1">Second parameter to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(iFactr.Data.CacheMethodType,System.String,System.String)">
+            <summary>
+            Gets an instance of the list from the List Uri
+            </summary>
+            <param name="cacheMethod">Cache method to use for request</param>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <param name="parm1">Second parameter to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(System.String,System.String,System.String)">
+            <summary>
+            Gets an instance of the list from the List Uri; using provider default cache method
+            </summary>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <param name="parm1">Second parameter to use in obtaining object</param>
+            <param name="parm2">Third parameter to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(iFactr.Data.CacheMethodType,System.String,System.String,System.String)">
+            <summary>
+            Gets an instance of the list from the List Uri
+            </summary>
+            <param name="cacheMethod">Cache method to use for request</param>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <param name="parm1">Second parameter to use in obtaining object</param>
+            <param name="parm2">Third parameter to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(System.String[])">
+            <summary>
+            Gets an instance of the list from the List Uri; using provider default cache method
+            </summary>
+            <param name="parms">string array of parameter values to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetList(iFactr.Data.CacheMethodType,System.String[])">
+            <summary>
+            Gets an instance of the list from the List Uri
+            </summary>
+            <param name="cacheMethod">Cache method to use for request</param>
+            <param name="parms">string array of parameter values to use in obtaining object</param>
+            <returns>ProviderResponse List of type T</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetListbyUri(System.String)">
+            <summary>
+            Obtains a list of items from given URI, defaults cache method to none, and uses provider default format.
+            </summary>
+            <param name="listRelativeUri">Relative Uri for list</param>
+            <returns>List of items obtained at URI</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetListbyUri(iFactr.Data.CacheMethodType,System.String)">
+            <summary>
+            Obtains a list of items from given URI
+            </summary>
+            <param name="cacheMethod">Cache method to use for request</param>
+            <param name="listRelativeUri">Relative Uri for list</param>
+            <returns>List of items obtained at URI</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get(`0)">
+            <summary>
+            returns an object corresponding to an object of the same type. Used for converting lightly loaded objects into fully loaded.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets an instance of type T from Object Uri.
+            </summary>
+            <param name="parameters">parameter collection needed to populate object uri</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get">
+            <summary>
+            Gets an instance of type T from Object Uri.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get(System.String)">
+            <summary>
+            Gets an instance of type T from Object Uri.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get(System.String,System.String)">
+            <summary>
+            Gets an instance of type T from Object Uri.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <param name="parm1">Second parameter to use in obtaining object</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get(System.String,System.String,System.String)">
+            <summary>
+            Gets an instance of type T from Object Uri.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining object</param>
+            <param name="parm1">Second parameter to use in obtaining object</param>
+            <param name="parm2">Third parameter to use in obtaining object</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Get(System.String[])">
+            <summary>
+            Gets an instance of type T from Object Uri.
+            </summary>
+            <param name="parms">string array of parameter values to use in obtaining object</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetByUri(System.String)">
+            <summary>
+            Request object by direct call to object's relative URI, no caching is supported and provider default serialization format is applied.
+            </summary>
+            <param name="objectRelativeUri">Relative URI endpoint of object being requested</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetByUri(iFactr.Data.CacheMethodType,System.String)">
+            <summary>
+            Request object by direct call to object's relative URI, provider default serialization format is applied.
+            </summary>
+            <param name="cacheMethod">CacheMethod to apply to object returned from call</param>
+            <param name="objectRelativeUri">Relative URI endpoint of object being requested</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetNetworkResource(System.String,MonoCross.NetworkResponse@)">
+            <summary>
+            supporting method to request a URI from the NRL Direct Stream method.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="networkResponse">The network response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Add(`0)">
+            <summary>
+            Queues a transaction for processing an Add operation on the server.  Requires ProvderMethod.POST support on the provider.
+            </summary>
+            <param name="obj">The Object to be added</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Change(`0)">
+            <summary>
+            Queues a transaction for processing a change operation on the server.  Requires ProvderMethod.PUT support on the provider.
+            </summary>
+            <param name="obj">The Object to be changed.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Delete(`0)">
+            <summary>
+            Queues a transaction for processing a delete operation on the server.  Requires ProvderMethod.DELETE support on the provider.
+            </summary>
+            <param name="obj">The Object to be deleted.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ProcessNetworkResponse(MonoCross.NetworkResponse)">
+            <summary>
+            Called after .Add or .Change is called (only when the PostMethod is NetworkPostMethod.ImmediateSynchronous)
+            </summary>
+            <param name="NetworkResponse"></param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.MapParams(`0)">
+            <summary>
+            Abstract method to map an item into a dictionary containing variables needed for the URI request.
+            </summary>
+            <param name="item">the object for which to obtain paramaters</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(`0)">
+            <summary>
+            Returns an object relative URI for the item provided.
+            </summary>
+            <param name="item"></param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri">
+            <summary>
+            Returns an object object relative URI.
+            </summary>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(System.String)">
+            <summary>
+            Returns an object relative URI with the parameter provided.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining URI</param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(System.String,System.String)">
+            <summary>
+            Returns an object relative URI for the parameters provided.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining URI</param>
+            <param name="parm1">Second parameter to use in obtaining URI</param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(System.String,System.String,System.String)">
+            <summary>
+            Returns an object relative URI for the parameters provided.
+            </summary>
+            <param name="parm0">First parameter to use in obtaining URI</param>
+            <param name="parm1">Second parameter to use in obtaining URI</param>
+            <param name="parm2">Second parameter to use in obtaining URI</param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(System.String[])">
+            <summary>
+            Returns an object relative URI for the parameters provided.
+            </summary>
+            <param name="parms">string array of parameter values to use in obtaining URI</param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Returns an object relative URI for the parameters provided.
+            </summary>
+            <param name="parameters"></param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetUri(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Returns an object relative URI for the parameters provided.
+            </summary>
+            <param name="baseUri"></param>
+            <param name="parameters"></param>
+            <returns>Relative URI from which to obtain object</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetCacheResource(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets an items from the cache using the parameters provided.
+            </summary>
+            <param name="parameters">The parameters used to retrieve the item from the cache.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.GetExpiration">
+            <summary>
+            Gets an expiration date based on the DefaultExpiration value.
+            </summary>
+            <returns>A DateTime representing the current provider expiration date.</returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExplodeCacheNone(System.Collections.Generic.List{`0})">
+            <summary>
+            performs no cache explosion, no in-memory caching performed.
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExplodeCacheLight(System.Collections.Generic.List{`0},System.DateTime,System.DateTime)">
+            <summary>
+            iterate through each item in the list and create lightly loaded entry in in-memory cache.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <param name="attemptRefreshDate">The attempt refresh date.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExplodeCachePersist(System.Collections.Generic.List{`0},System.DateTime,System.DateTime)">
+            <summary>
+            iterates each through each item in list and store directly in NRL Cache without placing object in the in-memory cache
+            , this assumes the list contains all necessary information for direct caching
+            </summary>
+            <param name="list">The list.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <param name="attemptRefreshDate">The attempt refresh date.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExplodeCacheDirect(System.Collections.Generic.List{`0},System.DateTime,System.DateTime)">
+            <summary>
+            iterates each through each item in list and store directly in NRL Cache, this assumes the list contains all necessary information for direct caching
+            </summary>
+            <param name="list">The list.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <param name="attemptRefreshDate">The attempt refresh date.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.StoreInNrlCache(`0,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Stores the in NRL cache.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="itemUri">The item URI.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <param name="attemptRefreshDate">The attempt refresh date.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.RetrieveFromNrlCache(System.String)">
+            <summary>
+            Retrieves a given URI from the NRL and stores in the in-memory cache.
+            </summary>
+            <param name="itemUri"></param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExplodeCacheRetrieve(System.Collections.Generic.List{`0})">
+            <summary>
+            Iterates through each item in the list, and calls Get(item) for each, so fully loaded items are in the in-memory cache
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale(`0)">
+            <summary>
+            Determines whether the specified item is stale.
+            </summary>
+            <param name="obj">The item to check.</param>
+            <returns>
+                <c>true</c> if the specified item is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Determines whether the item specified by the parameters provided is stale.
+            </summary>
+            <param name="parameters">The parameters of the item to check.</param>
+            <returns>
+                <c>true</c> if the item is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale">
+            <summary>
+            Determines whether this instance is stale.
+            </summary>
+            <returns>
+                <c>true</c> if this instance is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale(System.String)">
+            <summary>
+            Determines whether the item specified by the parameters provided is stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <returns>
+                <c>true</c> if the specified item is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale(System.String,System.String)">
+            <summary>
+            Determines whether the item specified by the parameters provided is stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <returns>
+                <c>true</c> if the specified item is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale(System.String,System.String,System.String)">
+            <summary>
+            Determines whether the item specified by the parameters provided is stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <param name="parm2">The parm2.</param>
+            <returns>
+                <c>true</c> if the specified item is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsStale(System.String[])">
+            <summary>
+            Determines whether the item specified by the parameters provided is stale..
+            </summary>
+            <param name="parms">The parms.</param>
+            <returns>
+                <c>true</c> if the specified item is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired(`0)">
+            <summary>
+            Determines whether the specified item is expired.
+            </summary>
+            <param name="obj">The item to check.</param>
+            <returns>
+                <c>true</c> if the specified item is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Determines whether the item specified by the parameters provided is expired.
+            </summary>
+            <param name="parameters">The parameters of the item to check.</param>
+            <returns>
+                <c>true</c> if the specified item is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired">
+            <summary>
+            Determines whether this instance is expired.
+            </summary>
+            <returns>
+                <c>true</c> if this instance is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired(System.String)">
+            <summary>
+            Determines whether the item specified by the parameters provided is expired.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <returns>
+                <c>true</c> if the specified item is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired(System.String,System.String)">
+            <summary>
+            Determines whether the item specified by the parameters provided is expired.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <returns>
+                <c>true</c> if the specified item is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired(System.String,System.String,System.String)">
+            <summary>
+            Determines whether the item specified by the parameters provided is expired.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <param name="parm2">The parm2.</param>
+            <returns>
+                <c>true</c> if the specified item is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsExpired(System.String[])">
+            <summary>
+            Determines whether the item specified by the parameters provided is expired.
+            </summary>
+            <param name="parms">The parms.</param>
+            <returns>
+                <c>true</c> if the specified item is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Expire(`0)">
+            <summary>
+            Expires an item and removes it from cache.
+            </summary>
+            <param name="obj">the item to expire and remove.  
+            This method removes cache metadata as well as the file from cache.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Expire(`0,iFactr.Data.ExpireMethodType)">
+            <summary>
+            Expires an item and optionally removes it from cache.
+            </summary>
+            <param name="obj">object to expire</param>
+            <param name="expireMethod">The expire method.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Expire(System.Collections.Generic.List{`0})">
+            <summary>
+            Expires all items contained within a list and removes all associated item files from cache.
+            </summary>
+            <param name="list">List containing items to expire and remove.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Expire(System.Collections.Generic.List{`0},iFactr.Data.ExpireMethodType)">
+            <summary>
+            Expires all items contained within a list and optionally removes all associated item files from cache.
+            </summary>
+            <param name="list">List containing items to expire and remove.</param>
+            <param name="expireMethod">The expire method.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Expire(System.String,iFactr.Data.ExpireMethodType)">
+            <summary>
+            Expires an items and optionally removes it from cache.
+            </summary>
+            <param name="relUri">The item to expire and remove.</param>
+            <param name="expireMethod">The expire method.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.Expire(System.String,iFactr.Data.ExpireMethodType,System.DateTime)">
+            <summary>
+            Expires the item specified by the URI, using the expiration method, and date provided.
+            </summary>
+            <param name="relUri">The relative URI of the item to expire.</param>
+            <param name="expireMethod">The expiration method to use.</param>
+            <param name="expireDate">The expiration date for the item.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireCacheList">
+            <summary>
+            Expires and removes items from the in-memory cache, but leaves NRL metadata and cached files intact.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireCacheList(iFactr.Data.ExpireMethodType)">
+            <summary>
+            Expires in-memory cache, based on the expire method provided.
+            </summary>
+            <param name="expireMethod">The expiration method to use.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListStale(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parameters">The parameters used to identify the list to check.</param>
+            <returns>
+                <c>true</c> if the list is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListStale">
+            <summary>
+            Determines whether the list is stale.
+            </summary>
+            <returns>
+                <c>true</c> if the list is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListStale(System.String)">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <returns>
+                <c>true</c> if the list is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListStale(System.String,System.String)">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <returns>
+                <c>true</c> if the list is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListStale(System.String,System.String,System.String)">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <param name="parm2">The parm2.</param>
+            <returns>
+                <c>true</c> if the list is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListStale(System.String[])">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parms">The parameters for the list to check.</param>
+            <returns>
+                <c>true</c> if the list is stale; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListExpired(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <returns>
+                <c>true</c> if the list is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListExpired">
+            <summary>
+            Determines whether the list is expired.
+            </summary>
+            <returns>
+                <c>true</c> if the list is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListExpired(System.String)">
+            <summary>
+            Determines whether the list specified by the parameter provided has become stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <returns>
+                <c>true</c> if the list is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListExpired(System.String,System.String)">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <returns>
+                <c>true</c> if the list is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListExpired(System.String,System.String,System.String)">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <param name="parm2">The parm2.</param>
+            <returns>
+                <c>true</c> if the list is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.IsListExpired(System.String[])">
+            <summary>
+            Determines whether the list specified by the parameters provided has become stale..
+            </summary>
+            <param name="parms">The parameters of the list to check.</param>
+            <returns>
+                <c>true</c> if the list is expired; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(iFactr.Data.ExpireMethodType,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Expires the list using the expire method and parameters provided.
+            </summary>
+            <param name="expireMethod">The expire method to use.</param>
+            <param name="parameters">The parameters for the list to expire.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList">
+            <summary>
+            Expires the list.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(iFactr.Data.ExpireMethodType)">
+            <summary>
+            Expires the list usint the expire method provided.
+            </summary>
+            <param name="expireMethod">The expire method to use.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(System.String)">
+            <summary>
+            Expires the list using the parameter provided.
+            </summary>
+            <param name="parm0">The parm0.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(iFactr.Data.ExpireMethodType,System.String)">
+            <summary>
+            Expires the list using the expire method and parameter provided.
+            </summary>
+            <param name="expireMethod">The expire method.</param>
+            <param name="parm0">The parm0.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(System.String,System.String)">
+            <summary>
+            Expires the list using the parameters provided.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(iFactr.Data.ExpireMethodType,System.String,System.String)">
+            <summary>
+            Expires the list usint the expire method and parameters provided.
+            </summary>
+            <param name="expireMethod">The expire method to use.</param>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(System.String,System.String,System.String)">
+            <summary>
+            Expires the list using the parameters provided.
+            </summary>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <param name="parm2">The parm2.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(iFactr.Data.ExpireMethodType,System.String,System.String,System.String)">
+            <summary>
+            Expires the list usint the expire method and parameters provided.
+            </summary>
+            <param name="expireMethod">The expire method to use.</param>
+            <param name="parm0">The parm0.</param>
+            <param name="parm1">The parm1.</param>
+            <param name="parm2">The parm2.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(System.String[])">
+            <summary>
+            Expires the list using the parameters provided.
+            </summary>
+            <param name="parms">The parameters for the list to expire.</param>
+        </member>
+        <member name="M:iFactr.Data.Provider`1.ExpireList(iFactr.Data.ExpireMethodType,System.String[])">
+            <summary>
+            Expires the list usint the expire method and parameters provided.
+            </summary>
+            <param name="expireMethod">The expire method to use.</param>
+            <param name="parms">The parameters of the list to expire.</param>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.PutPostDeleteHeaders">
+            <summary>
+            Gets the provider-specific header values to be included in all RESTful transaction requests to the server.
+            </summary>
+            <value>The transaction header value dictionary.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.MergedHeaders">
+            <summary>
+            Gets the combined RequestInjectionHeaders from the iFactr Application, along with the provider-specific PutPostDeleteHeaders
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.PostToListEndpoint">
+            <summary>
+            Gets or sets whether the Provider should try to post to a list endpoint by default.
+            </summary>
+            <value><c>true</c> to post to a list endpoint; otherwise <c>false</c>.</value>
+            <remarks>Will always return <c>true</c> if <see cref="P:iFactr.Data.Provider`1.Format"/> is <see cref="F:MonoCross.Utilities.Serialization.SerializationFormat.ODATA"/>.</remarks>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ListRelativeUri">
+            <summary>
+            Gets or sets the list relative URI.
+            </summary>
+            <value>The list relative URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ListAbsoluteUri">
+            <summary>
+            Gets the list absolute URI.
+            </summary>
+            <value>The list absolute URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ObjectAbsoluteUri">
+            <summary>
+            Gets the object absolute URI.
+            </summary>
+            <value>The object absolute URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.BaseUri">
+            <summary>
+            Gets the base URI.
+            </summary>
+            <value>The base URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ObjectRelativeUri">
+            <summary>
+            Gets the object relative URI.
+            </summary>
+            <value>The object relative URI.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ResponseTimeout">
+            <summary>
+            Gets or sets the response timeout.
+            </summary>
+            <value>The response timeout (in milliseconds).</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ProviderType">
+            <summary>
+            Gets the type of the provider.
+            </summary>
+            <value>The type of the provider.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.AuxilliaryTypes">
+            <summary>
+            Gets or sets the auxilliary serialization types for the provider.
+            </summary>
+            <value>The auxilliary types to be used for object serialization.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.QueueEnabled">
+            <summary>
+            Gets or sets a value indicating whether queue processing is enabled.
+            </summary>
+            <value><c>true</c> if the queue is actively processing transactions; otherwise, <c>false</c>.  
+            Setting this value to <c>true</c> will re-enable the queue when it is inactive, 
+            and begin processin any pending transactions on the provider.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.QueueRequestReturnsObject">
+            <summary>
+            Gets or sets a value indicating whether the queue returns an updated copy of the object.
+            </summary>
+            <value>
+                <c>true</c> if a transaction returns the updated object; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.CacheList">
+            <summary>
+            Gets a list of cached objects combined with any queued objects with transactions pending.
+            </summary>
+            <value>
+            The cache list of the Provider&lt;T&gt; as a <see cref="T:System.Collections.Generic.List`1"/> instance.
+            </value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.QueueList">
+            <summary>
+            Gets a list of objects currently in the transaction queue.
+            </summary>
+            <value>
+            The queue list of the Provider&lt;T&gt; as a <see cref="T:System.Collections.Generic.List`1"/> instance.
+            </value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ResourceStrategy">
+            <summary>
+            Gets or sets the resource strategy for the provider.
+            </summary>
+            <value>The entity level NRL ResourceStrategy to use for obtaining and caching objects from a RESTful service.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.CacheStaleMethod">
+            <summary>
+            Gets or sets the cache stale method for the provider.
+            </summary>
+            <value>The method used to attempt refresh of stale items in the cache.  The default value is CacheStaleMethod.Deferred.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.DefaultExpiration">
+            <summary>
+            Gets or sets the default expiration for cached items.
+            </summary>
+            <value>The default expiration as a TimeSpan.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.Format">
+            <summary>
+            Gets or sets the serialization format.
+            </summary>
+            <value>The serialization format for the provider.  The default format is XML.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.Serializer">
+            <summary>
+            Gets or sets the item serializer for the provider.
+            </summary>
+            <value>An ISerializer instance for the provider item type.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.CacheMethod">
+            <summary>
+            Gets or sets the cache method for the provider.
+            </summary>
+            <value>The cache method as a CacheMethodType value.  The default is CacheMethodType.Light.</value>
+        </member>
+        <member name="P:iFactr.Data.Provider`1.ProviderMethods">
+            <summary>
+            Gets or sets the provider methods supported by the data provider.
+            </summary>
+            <value>The supported provider methods.  All provider methods, (GET, POST, PUT and DELETE), are supported by default.</value>
+        </member>
+        <member name="T:iFactr.Data.CacheMethodType">
+            <summary>
+            Specifies the cache methods available on a data provider.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.CacheMethodType.None">
+            <summary>
+            None: No List Item Caching
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.CacheMethodType.Light">
+            <summary>
+            Light: place lightweight (i.e. unloaded) objects in CacheList but no NRL Caching
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.CacheMethodType.Direct">
+            <summary>
+            Direct: Separate List into individual objects and place directly into NRL Cache.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.CacheMethodType.Retrieve">
+            <summary>
+            Retrieve: Separate List into individual objects and call Get() on each. to store full objects in CacheList and NRL Cache.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.CacheMethodType.PersistOnly">
+            <summary>
+            PersistOnly: Separate List into individual objects and place directly into NRL Cache, but not in in-memory cache.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.ExpireMethodType">
+            <summary>
+            Indicates the valid values for the expire method type.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ExpireMethodType.ExpireOnly">
+            <summary>
+            ExpireOnly: Expire InMemory cache and NRL metadata, do not remove NRL cached file
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ExpireMethodType.ExpireRemove">
+            <summary>
+            ExpireRemove: Expire InMemory cache and NRL metadata, and remove NRL cached file
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ExpireMethodType.RemoveAll">
+            <summary>
+            RemoveAll: Remove InMemory cache and NRL, and remove NRL cached file
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ExpireMethodType.RemoveCache">
+            <summary>
+            RemoveCache: Remove InMemory cache and leave NRL metadata and cached files intact.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ExpireMethodType.StaleCache">
+            <summary>
+            StaleCache: Expire InMemory cache, mark NRL metadata as stale and leave NRL cached files intact.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.ProviderRegistry">
+            <summary>
+            A registry for data providers, indexed on Type.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.ProviderRegistry.Register(iFactr.Data.IDataProvider)">
+            <summary>
+            Registers the specified data provider.
+            </summary>
+            <param name="provider">The provider to be registered.</param>
+        </member>
+        <member name="M:iFactr.Data.ProviderRegistry.GetProvider(System.Type)">
+            <summary>
+            Gets the provider for the Type specified.
+            </summary>
+            <param name="providerType">Type of the data provider to get.</param>
+            <returns></returns>
+        </member>
+        <member name="T:iFactr.Data.ObjectSource">
+            <summary>
+            The source of the object on the provider response.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ObjectSource.NotSpecified">
+            <summary>
+            Object source unknown, or not specified.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ObjectSource.InMemoryCache">
+            <summary>
+            Object source is the in-memory provider cache.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ObjectSource.InMemoryQueue">
+            <summary>
+            Object source is the in-memory provider queue.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ObjectSource.NRLCache">
+            <summary>
+            Object source is the persistent cache, (NRL).
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ObjectSource.Server">
+            <summary>
+            Object source is the server.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.ObjectSource.LocalFile">
+            <summary>
+            Object source is a local file.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.ProviderResponse`1">
+            <summary>
+            Represents a data provider response to a RESTful request.
+            </summary>
+            <typeparam name="T">The type of the item returned on the response.</typeparam>
+        </member>
+        <member name="M:iFactr.Data.ProviderResponse`1.Create(MonoCross.NetworkResponse)">
+            <summary>
+            Creates a provider response based on the specified network response.
+            </summary>
+            <param name="networkResponse">The network response used to create the provider response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.ProviderResponse`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.ProviderResponse`1"/> class.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.AttemptToRefresh">
+            <summary>
+            Gets the DateTime value of when resource will next be refreshed
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.ObjectSource">
+            <summary>
+            Gets or sets the object source.
+            </summary>
+            <value>The object source of the response.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.Expiration">
+            <summary>
+            Gets or sets the expiration date on the response.
+            </summary>
+            <value>The cache expiration date of the item on the response.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.IsExpired">
+            <summary>
+            Gets a value indicating whether this instance is expired.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is expired; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.Downloaded">
+            <summary>
+            Gets or sets the downloaded date of the response.
+            </summary>
+            <value>The downloaded date of the provider response.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.StatusCode">
+            <summary>
+            Gets or sets the status code of the response.
+            </summary>
+            <value>The HTTP status code.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.WebExceptionStatusCode">
+            <summary>
+            Gets or sets the web exception status code of the response.
+            </summary>
+            <value>The web exception status code.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.Message">
+            <summary>
+            Gets or sets the message of the response.
+            </summary>
+            <value>The message as string value.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.Exception">
+            <summary>
+            Gets or sets the exception of the response.
+            </summary>
+            <value>The exception, if present, of the provider response.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.ResponseString">
+            <summary>
+            Gets or sets the source of the response.
+            </summary>
+            <value>The source as a string value.</value>
+            <summary>
+            Gets or sets the body of the response from the server as a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.ResponseBytes">
+            <summary>
+            Gets or sets the body of the response from the server as an array of <see cref="T:System.Byte"/>s.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.ProviderResponse`1.Object">
+            <summary>
+            Gets or sets the item object on the response.
+            </summary>
+            <value>The object/item associated with the response.</value>
+        </member>
+        <member name="T:iFactr.Data.ProviderSettings">
+            <summary>
+            Encryption settings for data providers.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.ProviderSettings.EncryptionKey">
+            <summary>
+            Gets or sets the encryption key.
+            </summary>
+            <value>The encryption key.</value>
+        </member>
+        <member name="P:iFactr.Data.ProviderSettings.EncryptionSalt">
+            <summary>
+            Gets or sets the encryption salt.
+            </summary>
+            <value>The encryption salt.</value>
+        </member>
+        <member name="T:iFactr.Data.QueueException">
+            <summary>
+            Represents a RESTful queue exception.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.QueueException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.QueueException"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.QueueException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.QueueException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:iFactr.Data.QueueException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.QueueException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:iFactr.Data.RestfulCache`1">
+            <summary>
+            Represents a RESTful cache of items of a specific object type.
+            </summary>
+            <typeparam name="T">The object type of the items in the cache.</typeparam>
+        </member>
+        <member name="M:iFactr.Data.RestfulCache`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulCache`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI of the cache.</param>
+            <param name="relativeUri">The relative URI of the cache.</param>
+        </member>
+        <member name="P:iFactr.Data.RestfulCache`1.BaseUri">
+            <summary>
+            Gets or sets the base URI.
+            </summary>
+            <value>The base URI.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulCache`1.RelativeUri">
+            <summary>
+            Gets or sets the relative URI.
+            </summary>
+            <value>The relative URI.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulCache`1.AbsoluteUri">
+            <summary>
+            Gets the absolute URI.
+            </summary>
+            <value>The absolute URI.</value>
+        </member>
+        <member name="T:iFactr.Data.HttpVerb">
+            <summary>
+            This static class contains HTTP verb values.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.HttpVerb.None">
+            <summary>
+            No HTTP Verb.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.HttpVerb.Get">
+            <summary>
+            The GET Verb.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.HttpVerb.Post">
+            <summary>
+            The POST Verb.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.HttpVerb.Put">
+            <summary>
+            The PUT Verb.
+            </summary>
+        </member>
+        <member name="F:iFactr.Data.HttpVerb.Delete">
+            <summary>
+            The DELETE Verb.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.RestfulObject`1">
+            <summary>
+            Represents a RESTful item of the type specified.
+            </summary>
+            <typeparam name="T">The item object type for the instance.</typeparam>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulObject`1"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.#ctor(`0,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulObject`1"/> class.
+            </summary>
+            <param name="domainObject">The item instance.</param>
+            <param name="uriEndpoint">The URI endpoint.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.#ctor(`0,System.String,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulObject`1"/> class.
+            </summary>
+            <param name="domainObject">The item instance.</param>
+            <param name="uriEndpoint">The URI endpoint.</param>
+            <param name="expirationDate">The expiration date.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.#ctor(`0,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulObject`1"/> class.
+            </summary>
+            <param name="domainObject">The item instance.</param>
+            <param name="httpVerb">The HTTP verb.</param>
+            <param name="uriEndpoint">The URI endpoint.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.#ctor(`0,System.String,System.String,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulObject`1"/> class.
+            </summary>
+            <param name="domainObject">The item instance.</param>
+            <param name="httpVerb">The HTTP verb.</param>
+            <param name="uriEndpoint">The URI endpoint.</param>
+            <param name="expirationDate">The expiration date.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.Clone(`0)">
+            <summary>
+            Creates a copy of a RESTful object for the item instance provided.
+            </summary>
+            <param name="domainObject">The item instance to clone to a new RESTful object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:iFactr.Data.RestfulObject`1.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.ExpirationDate">
+            <summary>
+            Gets or sets the expiration date of the RESTful object.
+            </summary>
+            <value>The expiration date.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.AttemptRefreshDate">
+            <summary>
+            Gets or sets the attempt refresh date of the RESTful object.
+            </summary>
+            <value>The attempt refresh date.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.UriEndpoint">
+            <summary>
+            Gets or sets the URI endpoint of the RESTful object.
+            </summary>
+            <value>The URI endpoint.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.TransactionEndpoint">
+            <summary>
+            Gets or sets the POST URI endpoint of the RESTful object.
+            </summary>
+            <value>The POST transaction URI endpoint.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.LazyLoaded">
+            <summary>
+            Gets or sets a value indicating whether the RESTful object is lazy loaded.
+            </summary>
+            <value><c>true</c> if lazy loaded; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.Verb">
+            <summary>
+            Gets or sets the HTTP verb of the RESTful object.
+            </summary>
+            <value>The HTTP verb.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.Object">
+            <summary>
+            Gets or sets the item instance of the RESTful object.
+            </summary>
+            <value>The item instance.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulObject`1.PutPostDeleteHeaders">
+            <summary>
+            Gets or sets the put post delete headers of the RESTful object.
+            </summary>
+            <value>The put post delete headers.</value>
+        </member>
+        <member name="T:iFactr.Data.RestfulQueue`1">
+            <summary>
+            Represents a RESTful queue for provider transaction processing.
+            </summary>
+            <typeparam name="T">The generic type of the queue.</typeparam>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="relativeUri">The relative URI.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor(System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="relativeUri">The relative URI.</param>
+            <param name="queueSerializationFormat">The queue serialization format.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor(System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="relativeUri">The relative URI.</param>
+            <param name="queueSerializationFormat">The queue serialization format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor(System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="relativeUri">The relative URI.</param>
+            <param name="queueSerializationFormat">The queue serialization format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="serializationFormat">The serialization format.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor(System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="relativeUri">The relative URI.</param>
+            <param name="queueSerializationFormat">The queue serialization format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="serializationFormat">The serialization format.</param>
+            <param name="customSerializationType">Type of the custom serialization.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.#ctor(System.String,System.String,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,MonoCross.Utilities.Serialization.SerializationFormat,System.Type,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:iFactr.Data.RestfulQueue`1"/> class.
+            </summary>
+            <param name="baseUri">The base URI.</param>
+            <param name="relativeUri">The relative URI.</param>
+            <param name="queueSerializationFormat">The queue serialization format.</param>
+            <param name="customQueueSerializationType">Type of the custom queue serialization.</param>
+            <param name="serializationFormat">The serialization format.</param>
+            <param name="customSerializationType">Type of the custom serialization.</param>
+            <param name="responseTimeout">The response timeout.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.Enqueue(iFactr.Data.RestfulObject{`0})">
+            <summary>
+            Enqueues the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.AttemptNextTransaction">
+            <summary>
+            Attempts the next transaction.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.DeserializeQueue">
+            <summary>
+            Deserializes the queue.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.SerializeQueue">
+            <summary>
+            Serializes the queue.
+            </summary>
+        </member>
+        <member name="M:iFactr.Data.RestfulQueue`1.DiscardQueue">
+            <summary>
+            Removes serialized file for queue and discards all queue contents
+            </summary>
+        </member>
+        <member name="E:iFactr.Data.RestfulQueue`1.OnRequestComplete">
+            <summary>
+            Occurs when a RESTful transaction is successfully completed.
+            </summary>
+        </member>
+        <member name="E:iFactr.Data.RestfulQueue`1.OnRequestFailed">
+            <summary>
+            Occurs when a RESTful transaction fails due to an application exception.
+            </summary>
+        </member>
+        <member name="E:iFactr.Data.RestfulQueue`1.OnRequestError">
+            <summary>
+            Occurs when a RESTful transaction receives an HTTP error from the server.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.AuxilliaryTypes">
+            <summary>
+            Gets or sets the auxilliary types.
+            </summary>
+            <value>The auxilliary types.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.DequeueOnError">
+            <summary>
+            Gets or sets a value indicating whether transactions should be dequeued when an error occurs.
+            </summary>
+            <value><c>true</c> if transactions should be dequeued; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.BaseUri">
+            <summary>
+            Gets or sets the base URI.
+            </summary>
+            <value>The base URI.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.RelativeUri">
+            <summary>
+            Gets or sets the relative URI.
+            </summary>
+            <value>The relative URI.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.AbsoluteUri">
+            <summary>
+            Gets the absolute URI.
+            </summary>
+            <value>The absolute URI.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.Format">
+            <summary>
+            Format - serialization format of business objects contained by the queue.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.QueueSerializationFormat">
+            <summary>
+            QueueSerializationFormat - serialization format of the restful queue containing the business objects.
+            </summary>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.ResponseTimeout">
+            <summary>
+            Gets or sets the response timeout.
+            </summary>
+            <value>The response timeout value in milliseconds.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.Serializer">
+            <summary>
+            Gets or sets the serializer for the queue.
+            </summary>
+            <value>The serializer for the queue.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.QueueSerializer">
+            <summary>
+            Gets or sets the queue serializer.
+            </summary>
+            <value>The queue serializer.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.CustomSerializerType">
+            <summary>
+            Gets or sets the type of the custom serializer.
+            </summary>
+            <value>The type of the custom serializer.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.CustomQueueSerializerType">
+            <summary>
+            Gets or sets the type of the custom queue serializer.
+            </summary>
+            <value>The type of the custom queue serializer.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:iFactr.Data.RestfulQueue`1"/> is enabled.
+            </summary>
+            <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:iFactr.Data.RestfulQueue`1.RequestReturnsObject">
+            <summary>
+            Gets or sets a value indicating whether a queue request will return the modified item.
+            </summary>
+            <value>
+            	<c>true</c> if the modified object is returned; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:iFactr.Data.RestfulQueue`1.RequestComplete">
+            <summary>
+            Defines the delegate for the OnRequestComplete event.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.RestfulQueue`1.RequestError">
+            <summary>
+            Defines the delegate for the OnRequestError event.
+            </summary>
+        </member>
+        <member name="T:iFactr.Data.RestfulQueue`1.RequestFailed">
+            <summary>
+            Defines the delegate for the OnRequestFailed event.
+            </summary>
+        </member>
+    </members>
+</doc>

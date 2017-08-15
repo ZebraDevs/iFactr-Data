@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>iFactr.Data</id>
+    <version>$version$</version>
+    <title>iFactr Data Framework</title>
+    <authors>Zebra</authors>
+    <owners>Zebra Technologies Corp.</owners>
+    <licenseUrl>https://raw.githubusercontent.com/Zebra/iFactr-Data/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Zebra/iFactr-Data</projectUrl>
+    <!--<iconUrl>https://raw.githubusercontent.com/Zebra/iFactr-UI/master/monocross.png</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A cross-platform mobile framework using C# .NET and Mono to consume data services on iOS, Android, Windows and Webkit.</description>
+    <summary>Cross-platform Data Service interfaces</summary>
+    <releaseNotes>4.0 Release for iFactr Open Source with MIT license.</releaseNotes>
+    <copyright>2010-2017 Zebra Technologies Corp.</copyright>
+    <tags>MonoCross iFactr</tags>
+    <dependencies>
+      <dependency id="MonoCross" version="4.0.0.42" />
+    </dependencies>
+  </metadata>
+</package>

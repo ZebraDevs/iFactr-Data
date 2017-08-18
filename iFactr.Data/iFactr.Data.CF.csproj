@@ -59,7 +59,7 @@
       <HintPath>..\Distribution\Ionic.Zip.CF.dll</HintPath>
     </Reference>
     <Reference Include="MonoCross">
-      <HintPath>..\Distribution\MonoCross.CF.dll</HintPath>
+      <HintPath>..\MonoCross\Distribution\MonoCross.CF.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

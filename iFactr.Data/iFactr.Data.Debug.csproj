@@ -85,10 +85,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Ionic.Zip\Zip PCL\Zip PCL.Debug.csproj">
-      <Project>{e44cb979-b36c-48df-8e38-df7ef2242292}</Project>
-      <Name>Zip PCL.Debug</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MonoCross\MonoCross.csproj">
       <Project>{f8072058-8601-4141-8c7a-a8018a6bbafd}</Project>
       <Name>MonoCross</Name>

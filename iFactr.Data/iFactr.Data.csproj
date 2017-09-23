@@ -11,7 +11,7 @@
     <RootNamespace>iFactr.Data</RootNamespace>
     <AssemblyName>iFactr.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;PCL;PARTIAL_SIGN;</DefineConstants>
+    <DefineConstants>TRACE;PCL;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\iFactr.Data.XML</DocumentationFile>
@@ -84,12 +84,6 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Ionic.Zip\Zip PCL\Zip PCL.csproj">
-      <Project>{e44cb979-b36c-48df-8e38-df7ef2242292}</Project>
-      <Name>Zip PCL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoCross">
       <HintPath>..\MonoCross\Distribution\MonoCross.dll</HintPath>

@@ -529,6 +529,7 @@ namespace iFactr.Data
                             case HttpStatusCode.ServiceUnavailable:
                             case HttpStatusCode.RequestTimeout:
                             case HttpStatusCode.BadGateway:
+                            case HttpStatusCode.GatewayTimeout:
                             case (HttpStatusCode)(-1):   // application exception from post
                             case (HttpStatusCode)(-2):   // no response object from post
                                 Device.Log.Debug("Halt Queue Processing: item: " + nextItem.ToString() + " type: " + typeof(T).ToString());

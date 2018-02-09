@@ -858,6 +858,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                     case HttpStatusCode.ServiceUnavailable:
                     case HttpStatusCode.RequestTimeout:
                     case HttpStatusCode.BadGateway:
+                    case HttpStatusCode.GatewayTimeout:
                     case (HttpStatusCode)(-1):
                     case (HttpStatusCode)(-2):
                         CacheIndexMap.PrefetchProcessEnabled = false;

@@ -207,6 +207,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                 case HttpStatusCode.Unauthorized:        // return when session expires
                 case HttpStatusCode.InternalServerError: // return when an exception happens
                 case HttpStatusCode.ServiceUnavailable:  // return when the database or siteminder are unavailable
+                case HttpStatusCode.GatewayTimeout:      // return when external router fails health check and round robin
                     PostNetworkResponse.Message = String.Format("Network Service responded with status code {0}", state.StatusCode);
                     Device.PostNetworkResponse(PostNetworkResponse);
                     break;

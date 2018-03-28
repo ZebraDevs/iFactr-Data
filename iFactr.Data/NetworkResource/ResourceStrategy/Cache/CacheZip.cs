@@ -288,7 +288,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             using (var zip = new System.IO.Compression.ZipArchive(zipBytes, System.IO.Compression.ZipArchiveMode.Read))
                 foreach (var entry in zip.Entries)
                     using (var stream = entry.Open())
-                        Device.File.Save(cachePath.AppendPath(entry.FullName), stream);
+                        Device.File.Save(cachePath.AppendPath(entry.FullName), stream, EncryptionMode.NoEncryption);
 #endif
 
             Device.Log.Metric(string.Format("Extract zip file: file: {0} cache path: {1}  Time: {2:0} milliseconds", zipFileName, cachePath, DateTime.UtcNow.Subtract(dtMetric).TotalMilliseconds));

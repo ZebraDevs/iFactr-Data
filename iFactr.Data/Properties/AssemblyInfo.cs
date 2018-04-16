@@ -5,12 +5,6 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-
-#if WindowsCE || PocketPC || PCL
-#else
-[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, Execution = true)]
-#endif
-
 [assembly: AssemblyTitle("iFactr.Data")]
 [assembly: AssemblyDescription("The iFactr RESTful Data Stack client")]
 [assembly: AssemblyConfiguration("")]

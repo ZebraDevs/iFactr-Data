@@ -16,10 +16,13 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zebra Technologies Corporation")]
 [assembly: AssemblyProduct("iFactr Data")]
-[assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
+// For signed assemblies you will need the assembly's public key
+// To acquire the public key of a signed assembly you will need the "sn.exe" tool that ships with Visual Studio. 
+// From the "Visual Studio Command Prompt": 
+// sn -Tp c:\MyExample\SomeLibrary.Test.dll
 
 
 // Version information for an assembly consists of the following four values:
@@ -32,13 +35,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyCopyright("Copyright © "+
+"2017")]
 [assembly: AssemblyVersion("4.0.0.42")]
-[assembly: AssemblyInformationalVersion("Branch - master (Hash: Working Tree)")]
-#if !NETCF
-  [assembly: AssemblyFileVersion("4.0.0.42")]
-#endif
-
-// For signed assemblies you will need the assembly's public key
-// To acquire the public key of a signed assembly you will need the "sn.exe" tool that ships with Visual Studio. 
-// From the "Visual Studio Command Prompt": 
-// sn -Tp c:\MyExample\SomeLibrary.Test.dll
+[assembly: AssemblyInformationalVersion("4.0.0.42-master.WorkingTree")]

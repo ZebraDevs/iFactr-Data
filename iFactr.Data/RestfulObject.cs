@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace iFactr.Data
 {
-    // To-Do: move HttpVerb class to iFactr.Core.Utilities.Networking, so it can be used there for simple network interface.
+    // To-Do: move HttpVerb class to MonoCross.Utilities.Networking, so it can be used there for simple network interface.
     /// <summary>
     /// This static class contains HTTP verb values.
     /// </summary>

@@ -569,7 +569,7 @@ namespace iFactr.Data
         {
             //ISerializer<T> iSerializer = SerializerFactory.Create<T>( QueueSerializationFormat );
 
-            //Device.Log.Debug (string.QueueSerializationFormat ("Request Body: {0}", iSerializer.SerializeObject (obj.Object, iFactr.Core.Utilities.EncryptionMode.NoEncryption)));
+            //Device.Log.Debug (string.QueueSerializationFormat ("Request Body: {0}", iSerializer.SerializeObject (obj.Object, MonoCross.Utilities.EncryptionMode.NoEncryption)));
             byte[] postBytes = Serializer.SerializeObjectToBytes(obj.Object, EncryptionMode.NoEncryption);
             var headers = MergeHeaders(obj);
             var body = Serializer.SerializeObject(obj.Object);

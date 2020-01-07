@@ -53,15 +53,5 @@ namespace iFactr.Data
             BaseUri = baseUri;
             RelativeUri = relativeUri;
         }
-        //public static HttpWebResponse HttpGet(string uri)
-        //{
-        //    Uri address = new Uri(uri);
-        //    HttpWebRequest request = WebRequest.Create(address) as HttpWebRequest;
-        //    request.Method = "GET";
-        //    request.Credentials = new NetworkCredential("1dd133b99c2b827df20a1b1c000609cd666bbf9f", "");
-        //    request.ContentType = "application/xml; charset=utf-8";
-        //    request.KeepAlive = false;
-        //    return (HttpWebResponse)request.GetResponse();
-        //}
     }
 }

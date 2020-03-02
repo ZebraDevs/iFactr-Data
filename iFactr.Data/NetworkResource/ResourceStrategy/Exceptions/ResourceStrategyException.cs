@@ -5,9 +5,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions
     /// <summary>
     /// Represents a resource strategy exception.
     /// </summary>
-#if !SILVERLIGHT && !NETCF && !NETFX_CORE && !PCL
     [Serializable]
-#endif
     public class ResourceStrategyException : Exception
     {
         /// <summary>
@@ -25,7 +23,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions
         /// <param name="message">The message.</param>
         /// <param name="inner">The inner exception.</param>
         public ResourceStrategyException(string message, Exception inner) : base(message, inner) { }
-#if !SILVERLIGHT && !NETCF && !NETFX_CORE && !PCL
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceStrategyException"/> class.
         /// </summary>
@@ -41,6 +38,5 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Exceptions
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
-#endif
     }
 }

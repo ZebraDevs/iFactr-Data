@@ -74,25 +74,7 @@ namespace iFactr.Data
             T element;
             try
             {
-#if NETCF
-                bool signaled = false;
-                double duration = 0;
-                var startTicks = DateTime.UtcNow.Ticks;
-                while (duration < timeout_milliseconds)
-                {
-                    foreach (var h in handles)
-                    {
-                        if (h.WaitOne(0))
-                        {
-                            signaled = true;
-                        }
-                    }
-                    duration = new TimeSpan((DateTime.UtcNow.Ticks - startTicks)).TotalMilliseconds;
-                }
-                if (signaled)
-#else
                 if (WaitHandle.WaitAny(handles, timeout_milliseconds) == 0)
-#endif
                 {
                     lock (_q)
                     {

@@ -7,9 +7,11 @@ using MonoCross.Utilities;
 using MonoCross.Utilities.Serialization;
 using System;
 using System.Collections.Generic;
-#if (!NETCF && !SILVERLIGHT && !NETFX_CORE && !PCL)
+using System.IO;
+using System.Net;
 using System.Net.Cache;
-#endif
+using System.Xml;
+using System.Xml.Linq;
 
 namespace iFactr.Data.Utilities
 {
@@ -18,69 +20,33 @@ namespace iFactr.Data.Utilities
     /// </summary>
     public static class Network
     {
-        ////<summary>
-        ////Loads the XML.
-        ////</summary>
-        ////<param name="url">The URL.</param>
-        ////<returns></returns>
-        //        public static XDocument LoadXML( string url )
-        //        {
-        //#if SILVERLIGHT || NETCF || PCL
-        //            return null;
-        //#elif NETFX_CORE
-        //            Uri address = new Uri(url);
+        /// <summary>
+        /// Loads the XML.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
+        public static XDocument LoadXML(string url)
+        {
+            Uri address = new Uri(url);
+            HttpRequestCachePolicy policy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheOnly);
+            HttpWebRequest.DefaultCachePolicy = policy;
 
-        //            //HttpRequestCachePolicy policy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheOnly);
-        //            //HttpWebRequest.DefaultCachePolicy = policy;
+            HttpWebRequest request = WebRequest.Create(address) as HttpWebRequest;
+            request.CachePolicy = policy;
+            request.Method = "GET";
+            request.ContentType = "application/xml; charset=utf-8";
+            request.KeepAlive = false;
+            request.UserAgent = "Mozilla/5.0";
 
-        //            HttpWebRequest request = WebRequest.Create(address) as HttpWebRequest;
-        //            //request.CachePolicy = policy;
-        //            request.Method = "GET";
-        //            request.ContentType = "application/xml; charset=utf-8";
-        //            //request.KeepAlive = false;
-        //            //request.UserAgent = "Mozilla/5.0";
-
-        //            StringWriter stringwriter = new StringWriter();
-        //            XmlWriter writer = XmlWriter.Create(stringwriter);
-
-        //            var task = request.GetResponseAsync();
-        //            task.Wait();
-
-        //            using (var response = task.Result as HttpWebResponse)
-        //            {
-        //                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-        //                {
-        //                    XDocument loaded = XDocument.Parse(streamReader.ReadToEnd());
-        //                    return loaded;
-        //                }
-        //            }
-        //#else
-        //            Uri address = new Uri( url );
-
-        //            HttpRequestCachePolicy policy = new HttpRequestCachePolicy( HttpRequestCacheLevel.CacheOnly );
-        //            HttpWebRequest.DefaultCachePolicy = policy;
-
-        //            HttpWebRequest request = WebRequest.Create( address ) as HttpWebRequest;
-        //            request.CachePolicy = policy;
-        //            request.Method = "GET";
-        //            request.ContentType = "application/xml; charset=utf-8";
-        //            request.KeepAlive = false;
-        //            request.UserAgent = "Mozilla/5.0";
-
-        //            StringWriter stringwriter = new StringWriter();
-        //            XmlWriter writer = XmlWriter.Create( stringwriter );
-
-        //            using ( HttpWebResponse response = request.GetResponse() as HttpWebResponse )
-        //            {
-        //                using ( StreamReader streamReader = new StreamReader( response.GetResponseStream() ) )
-        //                {
-        //                    XDocument loaded = XDocument.Parse( streamReader.ReadToEnd() );
-
-        //                    return loaded;
-        //                }
-        //            }
-        //#endif
-        //        }
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                {
+                    XDocument loaded = XDocument.Parse(streamReader.ReadToEnd());
+                    return loaded;
+                }
+            }
+        }
 
         /// <summary>
         /// method to initiate Prefetch processing based on provided manifest uri.
@@ -150,7 +116,7 @@ namespace iFactr.Data.Utilities
         /// <param name="args">The arguments for the request.</param>
         /// <param name="type">The resource strategy type.</param>
         /// <returns></returns>
-        public static T Get<T>(string uri,NetworkResourceArguments args, ResourceStrategyType type)
+        public static T Get<T>(string uri, NetworkResourceArguments args, ResourceStrategyType type)
         {
             return Get<T>(uri, args, type, SerializationFormat.XML);
         }
@@ -224,7 +190,7 @@ namespace iFactr.Data.Utilities
         /// <param name="type">The resource strategy type.</param>
         /// <param name="format">The serialization format.</param>
         /// <returns></returns>
-        public static T Get<T>(string uri,NetworkResourceArguments args, ResourceStrategyType type, SerializationFormat format)
+        public static T Get<T>(string uri, NetworkResourceArguments args, ResourceStrategyType type, SerializationFormat format)
         {
             return Get<T>(uri, args, type, format, null);
         }

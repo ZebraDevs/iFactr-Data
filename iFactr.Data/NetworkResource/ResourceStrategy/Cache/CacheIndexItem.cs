@@ -70,9 +70,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             }
             set
             {
-#if NETCF
-                _attemptToRefresh = value.ToUniversalTime();
-#else
                 if (value.Kind == DateTimeKind.Utc)
                 {
                     _attemptToRefresh = value;
@@ -95,7 +92,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                 }
 
                 _attemptToRefresh = new DateTime(tickCount, DateTimeKind.Utc);
-#endif
             }
         }
 
@@ -112,19 +108,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             }
             set
             {
-#if NETCF
-                _expiration = value.ToUniversalTime();
-#else
-                //value = value.ToUniversalTime();
-                //if ( CachePeriod.Ticks > 0 && Downloaded > DateTime.MinValue.ToUniversalTime() )
-                //{
-                //    _expiration = Downloaded.Add( CachePeriod );
-                //}
-                //else
-                //{
-                //    _expiration = value;
-                //}
-
                 if (value.Kind == DateTimeKind.Utc)
                 {
                     _expiration = value;
@@ -147,7 +130,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                 }
 
                 _expiration = new DateTime(tickCount, DateTimeKind.Utc);
-#endif
             }
         }
 

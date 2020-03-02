@@ -286,16 +286,9 @@ namespace iFactr.Data
         private static void ValidateCustomSerializerType<TS>(Type value)
         {
             // before allowing set to occur, confirm type is allowed as ISerializer<>
-#if !NETCF
             var item = System.Reflection.IntrospectionExtensions.GetTypeInfo(value).ImplementedInterfaces
                 .Where(x => System.Reflection.IntrospectionExtensions.GetTypeInfo(x).IsGenericType && x.GetGenericTypeDefinition() == typeof(ISerializer<>))
                 .FirstOrDefault(t => System.Reflection.IntrospectionExtensions.GetTypeInfo(t).GenericTypeArguments.First().Name == typeof(TS).Name);
-#else
-            var item = value.GetInterfaces()
-                .Where(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ISerializer<>))
-                .FirstOrDefault(t => t.GetGenericArguments().First().Name == typeof(TS).Name);
-#endif
-
             if (item == null)
                 throw new Exception("Type of " + value.Name + " is not a valid ISerializer<" + typeof(TS).Name + ">");
         }

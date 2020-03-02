@@ -5,9 +5,7 @@ namespace iFactr.Data
     /// <summary>
     /// Represents a RESTful queue exception.
     /// </summary>
-#if !SILVERLIGHT && !NETFX_CORE && !PCL
     [Serializable]
-#endif
     public class QueueException : Exception
     {
         /// <summary>
@@ -33,12 +31,5 @@ namespace iFactr.Data
             : base(message, inner)
         {
         }
-        //public QueueException(
-        //  System.Runtime.Serialization.SerializationInfo info,
-        //  System.Runtime.Serialization.StreamingContext context )
-        //    : base( info, context )
-        //{
-        //}
-
     }
 }

@@ -3,9 +3,7 @@ using System.Threading;
 using MonoCross.Navigation;
 using MonoCross.Utilities;
 
-#if !NETCF
 using System.Threading.Tasks;
-#endif
 
 namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
 {
@@ -65,24 +63,11 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             if (!Enabled)
                 return;
 
-#if !NETCF
             if (timer != null)
                 timer.Cancel();
             timer = new Timer(o => InitiatePrefetch(), null, 1000, timerDelay);
-#else
-            if (timer != null)
-                timer.Change(1000, timerDelay);
-            else
-            {
-                timer = new Timer( new TimerCallback( ( o ) =>
-                {
-                    InitiatePrefetch();
-                } ), null, 1000, timerDelay );
-            }
-#endif
         }
 
-#if !NETCF
         private sealed class Timer : CancellationTokenSource
         {
             internal Timer(Action<object> callback, object state, int millisecondsDueTime, int millisecondsPeriod, bool waitForCallbackBeforeNextPeriod = false)
@@ -112,7 +97,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                 base.Dispose(disposing);
             }
         }
-#endif
 
         /// <summary>
         /// Initiates the prefetch.
@@ -120,11 +104,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
         public void InitiatePrefetch()
         {
             Device.Thread.QueueIdle(CacheIndexMap.CleanIndexes);
-#if PCL
-            Task.Delay(60000).Wait();
-#else
             Thread.Sleep(60000);
-#endif
             Device.Thread.QueueIdle(CacheIndexMap.PreFetchIndexes);
         }
     }

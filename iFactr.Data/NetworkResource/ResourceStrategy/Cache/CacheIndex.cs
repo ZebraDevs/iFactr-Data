@@ -9,9 +9,7 @@ using MonoCross.Utilities.Threading;
 using MonoCross.Utilities;
 using MonoCross;
 
-#if !NETCF
 using System.Reflection;
-#endif
 
 namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
 {
@@ -25,9 +23,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
     /// <summary>
     /// Represents an index of cached resources.
     /// </summary>
-#if !SILVERLIGHT && !NETFX_CORE && !PCL
     [Serializable]
-#endif
 #if (DROID)
     [Android.Runtime.Preserve(AllMembers = true)]
 #elif (TOUCH)
@@ -581,13 +577,8 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             get
             {
                 return IdleThreadQueue.ThreadCountSafeRead > 0 ||
-#if NETCF
-                       IdleThreadQueue.Instance.Any(i => i.Delegate.Method.Name == "EnsureCurrentCache") ||
-                       IdleThreadQueue.Instance.Any(i => i.Delegate.Method.Name == "PreFetchItems");
-#else
                        IdleThreadQueue.Instance.Any(i => i.Delegate.GetMethodInfo().Name == "EnsureCurrentCache") ||
                        IdleThreadQueue.Instance.Any(i => i.Delegate.GetMethodInfo().Name == "PreFetchItems");
-#endif
             }
         }
 
@@ -824,7 +815,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                 CacheFetcher cacheFetcher = new CacheFetcher();
                 networkResponse = cacheFetcher.Fetch(this, cacheIndexItem, args);
 
-#if !SILVERLIGHT
                 if (networkResponse.WebExceptionStatusCode != WebExceptionStatus.Success  //.NameResolutionFailure 
                     && args.CacheStaleMethod == CacheStaleMethod.Immediate
                     && itemInCache
@@ -837,8 +827,6 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                     networkResponse.StatusCode = HttpStatusCode.OK;
                     networkResponse.WebExceptionStatusCode = WebExceptionStatus.Success;
                 }
-#endif
-
             }
             catch (NetworkResourceLibraryException nrlexc)
             {

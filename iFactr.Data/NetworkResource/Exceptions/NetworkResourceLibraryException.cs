@@ -5,9 +5,7 @@ namespace iFactr.Data.Utilities.NetworkResource
     /// <summary>
     /// Represents a network resource library exception.
     /// </summary>
-#if !SILVERLIGHT && !NETCF && !NETFX_CORE && !PCL
     [Serializable]
-#endif
     public class NetworkResourceLibraryException : Exception
     {
         /// <summary>
@@ -25,7 +23,6 @@ namespace iFactr.Data.Utilities.NetworkResource
         /// <param name="message">The message.</param>
         /// <param name="inner">The inner.</param>
         public NetworkResourceLibraryException(string message, Exception inner) : base(message, inner) { }
-#if !PCL && !NETCF
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkResourceLibraryException"/> class.
         /// </summary>
@@ -41,6 +38,5 @@ namespace iFactr.Data.Utilities.NetworkResource
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
-#endif
     }
 }

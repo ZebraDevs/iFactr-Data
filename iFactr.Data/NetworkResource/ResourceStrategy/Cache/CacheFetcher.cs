@@ -104,11 +104,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
 
             // WaitOne returns true if autoEvent were signaled (i.e. process completed before timeout expired)
             // WaitOne returns false it the timeout expired before the process completed.
-#if NETCF
-            if (!_autoEvent.WaitOne(timeoutMilliseconds, false))
-#else
             if (!_autoEvent.WaitOne(timeoutMilliseconds))
-#endif
             {
                 string message = "CacheFetcher call to FetchAsynch timed out. uri " + fetchParameters.CacheIndexItem.RelativeUri;
                 Device.Log.Metric(string.Format("CacheFetcher timed out: Uri: {0} Time: {1:F0} milliseconds ", fetchParameters.CacheIndexItem.RelativeUri, DateTime.UtcNow.Subtract(dtMetric).TotalMilliseconds));
@@ -232,9 +228,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             request.Method = "GET";
             //request.Proxy = null;
 
-#if !SILVERLIGHT && !NETFX_CORE && !PCL
             request.AutomaticDecompression = DecompressionMethods.GZip;
-#endif
 
             if (fetchParameters.Headers != null && fetchParameters.Headers.Any())
             {
@@ -250,13 +244,8 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                     }
                     else if (key.ToLower() == "host")
                     {
-                        Exception ex;
-#if NETCF
-                        ex = new ArgumentException("Host header value cannot be set in Compact Frameword libraries.");
-#else
                         //TODO: add the URL explaining PCL incompatibility
-                        ex = new ArgumentException("Host header value cannot be set in PCL libraries.");
-#endif
+                        Exception ex = new ArgumentException("Host header value cannot be set in PCL libraries.");
                         Device.Log.Error(ex);
                         throw ex;
                     }
@@ -282,11 +271,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             {
                 // Start the asynchronous request.
                 IAsyncResult result = request.BeginGetResponse(ResponseCallback, state);
-#if NETCF
-                if (!_allDone.WaitOne(timeoutMilliseconds, false))
-#else
                 if (!_allDone.WaitOne(timeoutMilliseconds))
-#endif
                 {
                     try { request.Abort(); } catch (Exception) { } // .Abort() always throws exception
                     return;
@@ -399,17 +384,7 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
 
                         using (var ms = new MemoryStream())
                         {
-#if NETCF
-                            var buffer = new byte[16 * 1024]; // Fairly arbitrary size
-                            int bytesRead;
-
-                            while ((bytesRead = httpStream.Read(buffer, 0, buffer.Length)) > 0)
-                            {
-                                ms.Write(buffer, 0, bytesRead);
-                            }
-#else
                             httpStream.CopyTo(ms);
-#endif
                             state.ResponseBytes = ms.ToArray();
                             state.ResponseString = Encoding.UTF8.GetString(state.ResponseBytes, 0, state.ResponseBytes.Length);
                         }
@@ -440,18 +415,13 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                     {
                         if (httpStream != null)
                         {
-#if !NETFX_CORE && !PCL
                             httpStream.Close();
-#endif
                             httpStream.Dispose();
                         }
 
                         if (state.Response != null)
-#if NETFX_CORE || PCL
                             state.Response.Dispose();
-#else
                             state.Response.Close();
-#endif
                     }
 
                     // move downloaded tmp file to cache file location.
@@ -494,10 +464,8 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             catch (WebException ex)
             {
                 string StatusDescription = string.Empty;
-#if !NETCF
                 ex.Data.Add("Uri", state.Request.RequestUri);
                 ex.Data.Add("Verb", state.Request.Method);
-#endif
                 if (ex.Response != null)
                 {
                     state.StatusCode = ((HttpWebResponse)ex.Response).StatusCode;
@@ -513,11 +481,9 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
                     state.StatusCode = (HttpStatusCode)(-2);
                 }
                 state.WebExceptionStatusCode = ex.Status;
-#if !NETCF
                 ex.Data.Add("StatusCode", state.StatusCode);
                 ex.Data.Add("WebException.Status", ex.Status);
                 ex.Data.Add("StatusDescription", StatusDescription);
-#endif
                 state.ErrorMessage = string.Format("Call to {0} had a WebException. {1}   Status: {2}   Desc: {3}", state.Request.RequestUri, ex.Message, ex.Status, StatusDescription);
                 state.Exception = ex;
                 state.Expiration = DateTime.UtcNow;
@@ -528,10 +494,8 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             }
             catch (Exception ex)
             {
-#if !NETCF
                 ex.Data.Add("Uri", state.Request.RequestUri);
                 ex.Data.Add("Verb", state.Request.Method);
-#endif
                 state.ErrorMessage = string.Format("Call to {0} had an Exception. {1}", state.Request.RequestUri, ex.Message);
                 state.Exception = ex;
                 state.StatusCode = (HttpStatusCode)(-1);
@@ -544,11 +508,10 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
             finally
             {
                 if (state.Response != null)
-#if NETFX_CORE || PCL
+                {
                     state.Response.Dispose();
-#else
                     state.Response.Close();
-#endif
+                }
                 state.Request = null;
 
                 _allDone.Set();
@@ -804,4 +767,3 @@ namespace iFactr.Data.Utilities.NetworkResource.ResourceStrategy.Cache
     }
 
 }
-

@@ -206,6 +206,13 @@
             Represents the HTTP Network Utility.
             </summary>
         </member>
+        <member name="M:iFactr.Data.Utilities.Network.LoadXML(System.String)">
+            <summary>
+            Loads the XML.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns></returns>
+        </member>
         <member name="M:iFactr.Data.Utilities.Network.InitiatePrefetch(System.String)">
             <summary>
             method to initiate Prefetch processing based on provided manifest uri.
